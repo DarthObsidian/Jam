@@ -9,7 +9,7 @@ extends Node2D
 @onready var cymbol_left = $body/cymbol_left
 
 
-func _ready():
+func _ready() -> void:
 	eyes.animation_finished.connect(_on_eye_anim_done)
 	body.animation_finished.connect(_on_body_anim_done)
 	drum_right.animation_finished.connect(_on_drum_right_done)
@@ -18,27 +18,27 @@ func _ready():
 	cymbol_right.animation_finished.connect(_on_cymbol_right_done)
 
 
-func _on_cymbol_left_done():
+func _on_cymbol_left_done() -> void:
 	cymbol_left.play("idle")
 
 
-func _on_cymbol_right_done():
+func _on_cymbol_right_done() -> void:
 	cymbol_right.play("idle")
 
 
-func _on_drum_left_done():
+func _on_drum_left_done() -> void:
 	drum_left.play("idle")
 
 
-func _on_drum_right_done():
+func _on_drum_right_done() -> void:
 	drum_right.play("idle")
 
 
-func _on_eye_anim_done():
+func _on_eye_anim_done() -> void:
 	eyes.play("idle")
 
 
-func _on_body_anim_done():
+func _on_body_anim_done() -> void:
 	body.play("idle")
 
 
@@ -59,7 +59,7 @@ func play_idle() -> void:
 	cymbol_left.play("idle")
 
 
-func play_hit(hit: Constants.Hit):
+func play_hit(hit: Constants.Hit) -> void:
 	match hit:
 		Constants.Hit.Left:
 			body.play("hitLeft")

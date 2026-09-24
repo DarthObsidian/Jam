@@ -1,13 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://duspu8ehigddu"]
+[gd_scene load_steps=5 format=3 uid="uid://duspu8ehigddu"]
 
 [ext_resource type="Texture2D" uid="uid://oacrncsqprgt" path="res://assets/test.png" id="1_yqeox"]
 [ext_resource type="Script" uid="uid://qyr74nq3bmf8" path="res://scripts/play_button.gd" id="2_vjb58"]
+[ext_resource type="Texture2D" uid="uid://bdlae8xl7vwaq" path="res://assets/placeholder/volume.png" id="3_con2f"]
+[ext_resource type="Script" uid="uid://df5mfubutms13" path="res://scripts/volume.gd" id="4_mhnvy"]
 
 [node name="root" type="Node2D"]
 
 [node name="Background" type="TextureRect" parent="."]
-offset_right = 1149.0
-offset_bottom = 639.0
+offset_right = 1155.0
+offset_bottom = 651.0
 texture = ExtResource("1_yqeox")
 
 [node name="Title" type="Label" parent="Background"]
@@ -28,4 +30,23 @@ offset_bottom = 417.0
 text = "Play"
 script = ExtResource("2_vjb58")
 
+[node name="volIcon" type="Sprite2D" parent="Background"]
+position = Vector2(137, 578)
+texture = ExtResource("3_con2f")
+hframes = 2
+vframes = 2
+frame = 2
+
+[node name="volume" type="HSlider" parent="Background"]
+layout_mode = 0
+offset_left = 162.0
+offset_top = 569.0
+offset_right = 360.0
+offset_bottom = 585.0
+max_value = 1.0
+step = 0.01
+value = 0.5
+script = ExtResource("4_mhnvy")
+
 [connection signal="pressed" from="Background/PlayButton" to="Background/PlayButton" method="_on_pressed"]
+[connection signal="value_changed" from="Background/volume" to="Background/volume" method="_on_value_changed"]
