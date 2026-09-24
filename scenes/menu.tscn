@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://duspu8ehigddu"]
+
+[ext_resource type="Texture2D" uid="uid://oacrncsqprgt" path="res://assets/test.png" id="1_yqeox"]
+[ext_resource type="Script" uid="uid://qyr74nq3bmf8" path="res://scripts/play_button.gd" id="2_vjb58"]
+
+[node name="root" type="Node2D"]
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 1149.0
+offset_bottom = 639.0
+texture = ExtResource("1_yqeox")
+
+[node name="Title" type="Label" parent="Background"]
+layout_mode = 0
+offset_left = 363.0
+offset_top = 165.0
+offset_right = 782.0
+offset_bottom = 248.0
+theme_override_font_sizes/font_size = 60
+text = "Ghost-guy jam"
+
+[node name="PlayButton" type="Button" parent="Background"]
+layout_mode = 0
+offset_left = 477.0
+offset_top = 373.0
+offset_right = 674.0
+offset_bottom = 417.0
+text = "Play"
+script = ExtResource("2_vjb58")
+
+[connection signal="pressed" from="Background/PlayButton" to="Background/PlayButton" method="_on_pressed"]
