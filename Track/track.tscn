@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://ccduod3a8kegm"]
+[gd_scene load_steps=6 format=3 uid="uid://ccduod3a8kegm"]
 
 [ext_resource type="Script" uid="uid://p32aj6fphx82" path="res://Track/track.gd" id="1_4iscw"]
 [ext_resource type="Texture2D" uid="uid://nfvds2caxfj5" path="res://Track/track_temp.png" id="2_6alhs"]
 [ext_resource type="PackedScene" uid="uid://bmb3es860hw4t" path="res://Note/note.tscn" id="2_8yr1p"]
 [ext_resource type="PackedScene" uid="uid://bk0yvgbqlobb6" path="res://Track/Lane/lane.tscn" id="3_8yr1p"]
-[ext_resource type="Script" uid="uid://dymmca6tqabv8" path="res://Track/Lane/lane.gd" id="5_mr25t"]
 [ext_resource type="Script" uid="uid://7jq3k24lsnel" path="res://scripts/song_controller.gd" id="6_tb4y8"]
 
 [node name="Track" type="Node2D" node_paths=PackedStringArray("background", "lanes")]
@@ -13,8 +12,9 @@ background = NodePath("TrackVisuals/TextureRect")
 lanes = NodePath("TrackVisuals/TextureRect/Lanes")
 note_scene = ExtResource("2_8yr1p")
 lane_scene = ExtResource("3_8yr1p")
-lane_count = 5
 lane_colors = Array[Color]([Color(1, 0, 0, 1), Color(0, 0, 1, 1), Color(10.581538, 8.116523, 0, 1), Color(0, 1, 0, 1), Color(1.3167266, 0.4601145, 0, 1), Color(0.7372549, 0, 1, 1)])
+spawn_height_mod = 10.0
+target_height_mod = 25.0
 
 [node name="TrackVisuals" type="Node2D" parent="."]
 
@@ -28,31 +28,6 @@ stretch_mode = 1
 
 [node name="Lanes" type="Node2D" parent="TrackVisuals/TextureRect"]
 position = Vector2(100, 250)
-
-[node name="Lane_0" type="Node2D" parent="TrackVisuals/TextureRect/Lanes" instance=ExtResource("3_8yr1p")]
-position = Vector2(-100, -250)
-script = ExtResource("5_mr25t")
-lane_size = Vector2(40, 500)
-
-[node name="Lane_1" type="Node2D" parent="TrackVisuals/TextureRect/Lanes" instance=ExtResource("3_8yr1p")]
-position = Vector2(-60, -250)
-script = ExtResource("5_mr25t")
-lane_size = Vector2(40, 500)
-
-[node name="Lane_2" type="Node2D" parent="TrackVisuals/TextureRect/Lanes" instance=ExtResource("3_8yr1p")]
-position = Vector2(-20, -250)
-script = ExtResource("5_mr25t")
-lane_size = Vector2(40, 500)
-
-[node name="Lane_3" type="Node2D" parent="TrackVisuals/TextureRect/Lanes" instance=ExtResource("3_8yr1p")]
-position = Vector2(20, -250)
-script = ExtResource("5_mr25t")
-lane_size = Vector2(40, 500)
-
-[node name="Lane_4" type="Node2D" parent="TrackVisuals/TextureRect/Lanes" instance=ExtResource("3_8yr1p")]
-position = Vector2(60, -250)
-script = ExtResource("5_mr25t")
-lane_size = Vector2(40, 500)
 
 [node name="SongController" type="Node" parent="." node_paths=PackedStringArray("track")]
 script = ExtResource("6_tb4y8")

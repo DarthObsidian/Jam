@@ -1,9 +1,55 @@
-[gd_scene load_steps=2 format=3 uid="uid://bk0yvgbqlobb6"]
+[gd_scene load_steps=7 format=3 uid="uid://bk0yvgbqlobb6"]
 
 [ext_resource type="Script" uid="uid://dymmca6tqabv8" path="res://Track/Lane/lane.gd" id="1_hchqx"]
+[ext_resource type="Texture2D" uid="uid://dvb0vpwdodo24" path="res://assets/placeholder/HitIndicator.png" id="2_l801v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1eiok"]
+atlas = ExtResource("2_l801v")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vn08n"]
+atlas = ExtResource("2_l801v")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvjsv"]
+atlas = ExtResource("2_l801v")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_onptw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1eiok")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vn08n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvjsv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvjsv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vn08n")
+}],
+"loop": false,
+"name": &"play",
+"speed": 20.0
+}]
 
 [node name="Lane" type="Node2D"]
 script = ExtResource("1_hchqx")
 
 [node name="CenterLine" type="Line2D" parent="."]
 points = PackedVector2Array(0, 500, 0, 0)
+
+[node name="HitIndicator" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_onptw")
+animation = &"play"

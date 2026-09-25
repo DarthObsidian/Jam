@@ -27,7 +27,11 @@ var spawn_test_note_button: Callable:
 
 @export var lane_vis_width := 10
 @export var spawn_height_mod := 0.0
-@export var target_height_mod := 0.0
+@export var target_height_mod : float = 0.0:
+	set(value): 
+		target_height_mod = max(0.0, value)
+		if Engine.is_editor_hint():
+			generate_lanes()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -91,7 +95,7 @@ func generate_lanes():
 			lane.owner = get_tree().edited_scene_root
 	
 
-func spawn_note(lane_index: int, travel_time: float, duration: float) -> void:
+func spawn_note(lane_index: int, hit_time: float, travel_time: float, duration: float) -> void:
 	if not note_scene:
 		print("ERROR: No note scene assigned")
 		return
@@ -115,6 +119,7 @@ func spawn_note(lane_index: int, travel_time: float, duration: float) -> void:
 	note.setup(
 		lane,
 		color,
+		hit_time,
 		travel_time,
 		duration
 	) 
@@ -124,7 +129,4 @@ func spawn_test_note() -> void:
 		return
 		
 	var random_lane = randi() % lane_count
-	spawn_note(random_lane, 2.0, 0.0)
-	
-func attempt_play_note(lane_index: int) -> Constants.HitStatus:
-	return Constants.HitStatus.Good
+	spawn_note(random_lane, 0, 2.0, 0.0)

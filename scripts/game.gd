@@ -61,16 +61,16 @@ func _process(delta: float) -> void:
 	if !gameOver:
 		var hitStatus = Constants.HitStatus.None
 		if Input.is_action_just_pressed("left"):
-			hitStatus = $Track.attempt_play_note(0)
+			hitStatus = $Song.judge_note(0)
 			$Ghost.play_hit(Constants.Hit.Left)
 		elif Input.is_action_just_pressed("mid-left"):
-			hitStatus = $Track.attempt_play_note(1)
+			hitStatus = $Song.judge_note(1)
 			$Ghost.play_hit(Constants.Hit.MidLeft)
 		elif Input.is_action_just_pressed("mid-right"):
-			hitStatus = $Track.attempt_play_note(2)
+			hitStatus = $Song.judge_note(2)
 			$Ghost.play_hit(Constants.Hit.MidRight)
 		elif Input.is_action_just_pressed("right"):
-			hitStatus = $Track.attempt_play_note(3)
+			hitStatus = $Song.judge_note(3)
 			$Ghost.play_hit(Constants.Hit.Right)
 
 		_do_hit(hitStatus)

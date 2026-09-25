@@ -6,6 +6,10 @@ extends Node
 @export var track: NoteTrack
 @export var music_player: AudioStreamPlayer
 
+var difficulty := Constants.Difficulty.Normal
+var perfect_window: float = 0.1
+var good_window: float = 0.35
+
 @export var note_travel_time: float = 2.0
 
 @export_tool_button("Play Selected Song")
@@ -101,11 +105,75 @@ func spawn_note(note_data: Dictionary) -> void:
 		return
 
 	var lane: int = note_data.get("lane", 0)
-	var hit_time: float = note_data.get("time", 0.0)
+	var hit_time: float = note_data.get("beat", 0.0) + initial_delay + note_travel_time
 	var duration: float = note_data.get("duration", 0.0)
 
 	track.spawn_note(
 		lane,
+		hit_time,
 		note_travel_time,
 		duration
 	)
+	
+	
+	
+func judge_note(lane_index: int) -> Constants.HitStatus:	
+	var player_time : float = get_song_time()
+
+	var note := get_best_note_for_lane(lane_index)
+	var lane := track.lanes.get_child(lane_index) as Lane
+
+	if lane == null:
+		print("ERROR: SongController: no lane matching index")
+		return Constants.HitStatus.Miss
+
+	if note == null:
+		lane.play_hit_visuals(Constants.HitStatus.Miss)
+		return Constants.HitStatus.Miss
+
+	var difference : float = abs(player_time - note.hit_time)
+	
+	print("Note hit time: ", note.hit_time, " player time: ", player_time, " Difference: ", difference)
+	
+	if difference <= perfect_window:
+		lane.play_hit_visuals(Constants.HitStatus.Perfect)
+		note.queue_free()
+		return Constants.HitStatus.Perfect
+
+	if difference <= good_window:
+		lane.play_hit_visuals(Constants.HitStatus.Good)
+		note.queue_free()
+		return Constants.HitStatus.Good
+	
+	lane.play_hit_visuals(Constants.HitStatus.Miss)	
+	return Constants.HitStatus.Miss
+	
+	
+	
+func get_best_note_for_lane(lane_index: int) -> Note:
+	if track == null:
+		return null
+
+	var lane := track.lanes.get_child(lane_index) as Lane
+
+	if lane == null:
+		return null
+
+	var best_note:Note = null
+	var best_difference := INF
+	var player_time := get_song_time()
+
+	for child in lane.get_children():
+		if child is Note:
+			var note := child as Note
+			var difference : float = abs(player_time - note.hit_time)
+
+			if difference < best_difference:
+				best_difference = difference
+				best_note = child
+
+	return best_note
+	
+	
+	
+	

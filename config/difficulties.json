@@ -1,0 +1,14 @@
+{
+  "Easy": {
+	"perfect_window": 0.15,
+	"good_window": 0.5
+  },
+  "Normal": {
+	"perfect_window": 0.1,
+	"good_window": 0.35
+  },
+  "Hard": {
+	"perfect_window": 0.05,
+	"good_window": 0.2
+  }
+}
