@@ -2,6 +2,8 @@
 class_name Lane
 extends Node2D
 
+@export var perfect_vfx_scene: PackedScene
+@export var good_vfx_scene: PackedScene
 @export var lane_size  := Vector2(100.0, 500.0)
 var spawn_offset: float
 var target_offset: float
@@ -39,8 +41,10 @@ func play_hit_visuals(hit_status: Constants.HitStatus) -> void:
 	#spawn FX
 	match hit_status:
 		Constants.HitStatus.Perfect:
-			#Perfect FX
-			pass
+			var vfx = perfect_vfx_scene.instantiate()
+			vfx.position = get_target_position()
+			add_child(vfx)
+			
 		Constants.HitStatus.Good:
 			#Good FX
 			pass

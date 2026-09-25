@@ -38,10 +38,6 @@ func _ready() -> void:
 	generate_lanes() # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func generate_lanes():
 	# Make sure everything we need exists. 
 	if not background: 
@@ -67,7 +63,6 @@ func generate_lanes():
 	
 	var track_rect = background.get_rect()
 	var track_size = track_rect.size
-	var track_origin = track_rect.position
 	var lane_width = track_size.x / lane_count
 	
 	print("Track size: ", track_size)
@@ -111,8 +106,6 @@ func spawn_note(lane_index: int, hit_time: float, travel_time: float, duration: 
 
 	var track_size := background.texture.get_size()
 	var lane_width := track_size.x / lane_count
-
-	var lane_center_x := lane_width / 2.0
 
 	var color := lane_colors[lane_index % lane_colors.size()]
 

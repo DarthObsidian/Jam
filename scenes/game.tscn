@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://huxwpcgu4wdb" path="res://scenes/ghost.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://b47s6u2f2s1t0" path="res://scripts/game.gd" id="1_yqjtg"]
 [ext_resource type="AudioStream" uid="uid://cc3ik0htir6bq" path="res://assets/music/CozyFallJam.mp3" id="2_p57ef"]
-[ext_resource type="PackedScene" uid="uid://bnxtn7jwjpvgm" path="res://scenes/combo.tscn" id="3_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://brxpg3f45g51v" path="res://scenes/combo.tscn" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://ccduod3a8kegm" path="res://Track/track.tscn" id="4_lbhrr"]
 [ext_resource type="Script" uid="uid://7jq3k24lsnel" path="res://scripts/song_controller.gd" id="5_iywne"]
 

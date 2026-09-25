@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://djms2e6bn0fqb"]
+
+[ext_resource type="Script" uid="uid://c6x4yjmihrwtf" path="res://Track/Lane/perfect_sparks.gd" id="1_fd6fn"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g81qj"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 5.0
+emission_ring_radius = 5.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 45, 0)
+
+[node name="PerfectSparks" type="Node2D"]
+script = ExtResource("1_fd6fn")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 20
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.9
+process_material = SubResource("ParticleProcessMaterial_g81qj")

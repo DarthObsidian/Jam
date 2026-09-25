@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bk0yvgbqlobb6"]
+[gd_scene load_steps=8 format=3 uid="uid://bk0yvgbqlobb6"]
 
 [ext_resource type="Script" uid="uid://dymmca6tqabv8" path="res://Track/Lane/lane.gd" id="1_hchqx"]
+[ext_resource type="PackedScene" uid="uid://djms2e6bn0fqb" path="res://Track/Lane/perfect_sparks.tscn" id="2_1eiok"]
 [ext_resource type="Texture2D" uid="uid://dvb0vpwdodo24" path="res://assets/placeholder/HitIndicator.png" id="2_l801v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1eiok"]
@@ -45,6 +46,7 @@ animations = [{
 
 [node name="Lane" type="Node2D"]
 script = ExtResource("1_hchqx")
+perfect_vfx_scene = ExtResource("2_1eiok")
 
 [node name="CenterLine" type="Line2D" parent="."]
 points = PackedVector2Array(0, 500, 0, 0)
