@@ -23,6 +23,7 @@ var next_note_index: int = 0
 
 var bpm: float = 120.0
 var initial_delay: float = 0.0
+var offset: float = 0.0
 
 
 var song_time_temp: float = 0.0
@@ -63,20 +64,22 @@ func load_song() -> void:
 	chart_data = json.data
 
 	bpm = chart_data.get("bpm", 120.0)
-	initial_delay = chart_data.get("initial_delay", 0.0)
+	offset = chart_data.get("offset", 0.0)
 	notes = chart_data.get("notes", [])
 
 	next_note_index = 0
 
 	print("Loaded song: ", chart_data.get("song", "Unknown"))
 	print("BPM: ", bpm)
-	print("Delay: ", initial_delay)
+	print("Offset: ", offset)
 	print("Notes: ", notes.size())
 	
 	music_player.play()
 
 
 func get_song_time() -> float:
+	if music_player == null:
+		return 0.0
 	return music_player.get_playback_position() * (bpm/60)
 
 
@@ -113,7 +116,7 @@ func spawn_note(note_data: Dictionary) -> void:
 
 
 func judge_note(lane_index: int) -> Constants.HitStatus:	
-	var player_time : float = get_song_time()
+	var player_time : float = get_song_time() + offset
 
 	var note := get_best_note_for_lane(lane_index)
 	var lane := track.lanes.get_child(lane_index) as Lane

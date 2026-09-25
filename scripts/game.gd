@@ -2,11 +2,16 @@ extends Node
 
 
 var totalPoints : int = 0
+var high_score : int = 0
 const POINTS = 5
 const WAIT = 2
 var gameOver = false
 var gameOverDelay = 0
-@onready var finalScore = $CanvasLayer/Panel/VBoxContainer/HBoxContainer/FinalScore
+@onready var finalScore = $CanvasLayer/Panel/VBoxContainer/ScoreBox/FinalScore
+@onready var highScoreText = $CanvasLayer/Panel/VBoxContainer/HighScoreBox/HighScore
+@onready var scoreBox = $CanvasLayer/Panel/VBoxContainer/ScoreBox
+@onready var highScoreBox = $CanvasLayer/Panel/VBoxContainer/HighScoreBox
+@onready var highScoreLabel = $CanvasLayer/Panel/VBoxContainer/HighScoreBox/HighScoreLabel
 @onready var gameOverPanel = $CanvasLayer/Panel
 @onready var points = $CanvasLayer/Points
 
@@ -47,6 +52,14 @@ func _on_miss() -> void:
 
 func _on_game_over() -> void:
 	gameOver = true
+	if(totalPoints > high_score):
+		high_score = totalPoints
+		scoreBox.visible = false;
+		highScoreLabel.text = "New High Score:"
+	else:
+		highScoreLabel.text = "Session High Score:"
+		scoreBox.visible = true;
+	highScoreText.text = str(high_score)	
 	finalScore.text = str(totalPoints)
 	gameOverPanel.visible = true
 

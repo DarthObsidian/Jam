@@ -98,15 +98,27 @@ layout_mode = 2
 text = "Thank you for playing!"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Panel/VBoxContainer"]
+[node name="ScoreBox" type="HBoxContainer" parent="CanvasLayer/Panel/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label2" type="Label" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer"]
+[node name="Label2" type="Label" parent="CanvasLayer/Panel/VBoxContainer/ScoreBox"]
 layout_mode = 2
 text = "Score:"
 
-[node name="FinalScore" type="Label" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer"]
+[node name="FinalScore" type="Label" parent="CanvasLayer/Panel/VBoxContainer/ScoreBox"]
+layout_mode = 2
+text = "1000"
+
+[node name="HighScoreBox" type="HBoxContainer" parent="CanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="HighScoreLabel" type="Label" parent="CanvasLayer/Panel/VBoxContainer/HighScoreBox"]
+layout_mode = 2
+text = "High Score:"
+
+[node name="HighScore" type="Label" parent="CanvasLayer/Panel/VBoxContainer/HighScoreBox"]
 layout_mode = 2
 text = "1000"
 

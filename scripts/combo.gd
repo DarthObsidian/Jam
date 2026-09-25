@@ -54,6 +54,8 @@ func set_glow_strength() -> void:
 	if(currentStep >= pumpkins.size()):
 		return
 	var strength : float = 0.0
+	
+	#too lazy to figure out how to do a curve, thus silly switches
 	match currentIndex:
 		0:
 			strength = 0.0
