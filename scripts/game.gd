@@ -3,7 +3,9 @@ extends Node
 
 var totalPoints : int = 0
 const POINTS = 5
+const WAIT = 2
 var gameOver = false
+var gameOverDelay = 0
 @onready var finalScore = $CanvasLayer/Panel/VBoxContainer/HBoxContainer/FinalScore
 @onready var gameOverPanel = $CanvasLayer/Panel
 
@@ -75,5 +77,6 @@ func _process(delta: float) -> void:
 
 		_do_hit(hitStatus)
 	else:
-		if gameOverPanel.position.y > 141.0:
+		gameOverDelay += delta
+		if gameOverDelay >= WAIT and gameOverPanel.position.y > 141.0:
 			gameOverPanel.position.y = lerp(gameOverPanel.position.y, 140.0, delta * 5)

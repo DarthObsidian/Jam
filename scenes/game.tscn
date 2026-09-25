@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://b2d4bmi100ubg"]
+[gd_scene load_steps=10 format=3 uid="uid://b2d4bmi100ubg"]
 
 [ext_resource type="PackedScene" uid="uid://huxwpcgu4wdb" path="res://scenes/ghost.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://b47s6u2f2s1t0" path="res://scripts/game.gd" id="1_yqjtg"]
-[ext_resource type="PackedScene" path="res://scenes/combo.tscn" id="3_lnu2h"]
+[ext_resource type="AudioStream" uid="uid://cc3ik0htir6bq" path="res://assets/music/CozyFallJam.mp3" id="2_p57ef"]
+[ext_resource type="PackedScene" uid="uid://bnxtn7jwjpvgm" path="res://scenes/combo.tscn" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://ccduod3a8kegm" path="res://Track/track.tscn" id="4_lbhrr"]
 [ext_resource type="Script" uid="uid://7jq3k24lsnel" path="res://scripts/song_controller.gd" id="5_iywne"]
 
@@ -44,6 +45,7 @@ expand_margin_bottom = 2.0
 script = ExtResource("1_yqjtg")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_p57ef")
 
 [node name="Ghost" parent="." instance=ExtResource("1_uwrxv")]
 position = Vector2(874.00006, 279)
@@ -117,4 +119,5 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_p57ef")
 theme_override_styles/focus = SubResource("StyleBoxFlat_u5sy4")
 text = "Play Again"
 
+[connection signal="finished" from="Music" to="." method="_on_game_over"]
 [connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/HBoxContainer2/Button" to="." method="_on_restart_click"]

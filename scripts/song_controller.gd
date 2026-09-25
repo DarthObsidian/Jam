@@ -29,17 +29,14 @@ var song_time_temp: float = 0.0
 
 
 func _ready() -> void:
-	#load_chart()
 	pass
-	
+
+
 func _process(_delta: float) -> void:
-	#if music_player == null:
-	#	return
-	song_time_temp += _delta * (bpm/60.0)
 	var song_time := get_song_time()
 	spawn_notes(song_time)
-		
-		
+
+
 func load_song() -> void:
 	if song_data_file.is_empty():
 		push_error("SongController: No chart file assigned.")
@@ -76,12 +73,11 @@ func load_song() -> void:
 	print("Delay: ", initial_delay)
 	print("Notes: ", notes.size())
 	
-	song_time_temp = 0.0
+	music_player.play()
 
 
 func get_song_time() -> float:
-	return song_time_temp
-	#return music_player.get_playback_position() + offset
+	return music_player.get_playback_position() * (bpm/60)
 
 
 func spawn_notes(song_time: float) -> void:
@@ -114,9 +110,8 @@ func spawn_note(note_data: Dictionary) -> void:
 		note_travel_time,
 		duration
 	)
-	
-	
-	
+
+
 func judge_note(lane_index: int) -> Constants.HitStatus:	
 	var player_time : float = get_song_time()
 
@@ -173,7 +168,3 @@ func get_best_note_for_lane(lane_index: int) -> Note:
 				best_note = child
 
 	return best_note
-	
-	
-	
-	
