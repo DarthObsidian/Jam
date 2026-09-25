@@ -2,7 +2,7 @@
 class_name NoteTrack
 extends Node2D
 
-@export var background : Sprite2D
+@export var background : TextureRect
 @export var lanes: Node2D
 @export var note_scene: PackedScene
 @export var lane_scene: PackedScene

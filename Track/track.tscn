@@ -8,36 +8,41 @@
 
 [node name="Track" type="Node2D" node_paths=PackedStringArray("background", "lanes")]
 script = ExtResource("1_4iscw")
-background = NodePath("TrackVisuals/Background")
-lanes = NodePath("TrackVisuals/Background/Lanes")
+background = NodePath("TrackVisuals/TextureRect")
+lanes = NodePath("TrackVisuals/TextureRect/Lanes")
 note_scene = ExtResource("2_8yr1p")
 lane_scene = ExtResource("3_8yr1p")
 lane_colors = Array[Color]([Color(1, 0, 0, 1), Color(0, 0, 1, 1), Color(10.581538, 8.116523, 0, 1), Color(0, 1, 0, 1)])
 
 [node name="TrackVisuals" type="Node2D" parent="."]
-scale = Vector2(40, 120)
 
-[node name="Background" type="Sprite2D" parent="TrackVisuals"]
+[node name="TextureRect" type="TextureRect" parent="TrackVisuals"]
+custom_minimum_size = Vector2(200, 500)
+offset_right = 200.0
+offset_bottom = 500.0
 texture = ExtResource("2_6alhs")
+expand_mode = 1
+stretch_mode = 1
 
-[node name="Lanes" type="Node2D" parent="TrackVisuals/Background"]
+[node name="Lanes" type="Node2D" parent="TrackVisuals/TextureRect"]
+position = Vector2(100, 250)
 
-[node name="Lane_0" type="Node2D" parent="TrackVisuals/Background/Lanes" instance=ExtResource("3_8yr1p")]
-position = Vector2(-32, -32)
+[node name="Lane_0" type="Node2D" parent="TrackVisuals/TextureRect/Lanes" instance=ExtResource("3_8yr1p")]
+position = Vector2(-100, -250)
 script = ExtResource("5_mr25t")
-lane_size = Vector2(16, 64)
+lane_size = Vector2(50, 500)
 
-[node name="Lane_1" type="Node2D" parent="TrackVisuals/Background/Lanes" instance=ExtResource("3_8yr1p")]
-position = Vector2(-16, -32)
+[node name="Lane_1" type="Node2D" parent="TrackVisuals/TextureRect/Lanes" instance=ExtResource("3_8yr1p")]
+position = Vector2(-50, -250)
 script = ExtResource("5_mr25t")
-lane_size = Vector2(16, 64)
+lane_size = Vector2(50, 500)
 
-[node name="Lane_2" type="Node2D" parent="TrackVisuals/Background/Lanes" instance=ExtResource("3_8yr1p")]
-position = Vector2(0, -32)
+[node name="Lane_2" type="Node2D" parent="TrackVisuals/TextureRect/Lanes" instance=ExtResource("3_8yr1p")]
+position = Vector2(0, -250)
 script = ExtResource("5_mr25t")
-lane_size = Vector2(16, 64)
+lane_size = Vector2(50, 500)
 
-[node name="Lane_3" type="Node2D" parent="TrackVisuals/Background/Lanes" instance=ExtResource("3_8yr1p")]
-position = Vector2(16, -32)
+[node name="Lane_3" type="Node2D" parent="TrackVisuals/TextureRect/Lanes" instance=ExtResource("3_8yr1p")]
+position = Vector2(50, -250)
 script = ExtResource("5_mr25t")
-lane_size = Vector2(16, 64)
+lane_size = Vector2(50, 500)
