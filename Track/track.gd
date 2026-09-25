@@ -119,7 +119,6 @@ func spawn_note(lane_index: int, travel_time: float, duration: float) -> void:
 		duration
 	) 
 
-
 func spawn_test_note() -> void:
 	if not Engine.is_editor_hint():
 		return
@@ -127,5 +126,5 @@ func spawn_test_note() -> void:
 	var random_lane = randi() % lane_count
 	spawn_note(random_lane, 2.0, 0.0)
 	
-func attempt_play_note(lane_index: int) -> HitStatus:
-	pass
+func attempt_play_note(lane_index: int) -> Constants.HitStatus:
+	return Constants.HitStatus.Good
