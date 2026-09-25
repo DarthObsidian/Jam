@@ -32,6 +32,11 @@ func add_combo() -> void:
 	currentStep += 1
 
 
+func add_perfect_combo() -> void:
+	add_combo()
+	add_combo()
+
+
 func clear_combo() -> void:
 	for pumpkin in pumpkins:
 		pumpkin.visible = false
