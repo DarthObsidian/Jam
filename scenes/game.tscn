@@ -1,10 +1,44 @@
-[gd_scene load_steps=6 format=3 uid="uid://b2d4bmi100ubg"]
+[gd_scene load_steps=9 format=3 uid="uid://b2d4bmi100ubg"]
 
 [ext_resource type="PackedScene" uid="uid://huxwpcgu4wdb" path="res://scenes/ghost.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://b47s6u2f2s1t0" path="res://scripts/game.gd" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://bnxtn7jwjpvgm" path="res://scenes/combo.tscn" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://ccduod3a8kegm" path="res://Track/track.tscn" id="4_lbhrr"]
 [ext_resource type="Script" path="res://scripts/song_controller.gd" id="5_iywne"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iywne"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p57ef"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.4006977, 0.40069774, 0.40069756, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u5sy4"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
 
 [node name="Game" type="Node"]
 script = ExtResource("1_yqjtg")
@@ -28,7 +62,9 @@ song_data_file = "res://SongData/song_mhall.json"
 track = NodePath("../Track")
 music_player = NodePath("../Music")
 
-[node name="Points" type="RichTextLabel" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Points" type="RichTextLabel" parent="CanvasLayer"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -39,3 +75,46 @@ grow_horizontal = 0
 theme_override_font_sizes/normal_font_size = 40
 text = "0"
 horizontal_alignment = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+offset_left = 318.0
+offset_top = 140.0
+offset_right = 860.0
+offset_bottom = 468.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_right = 542.0
+offset_bottom = 328.0
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Thank you for playing!"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Score:"
+
+[node name="FinalScore" type="Label" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "1000"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_iywne")
+theme_override_styles/hover = SubResource("StyleBoxFlat_p57ef")
+theme_override_styles/focus = SubResource("StyleBoxFlat_u5sy4")
+text = "Play Again"
+
+[connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/HBoxContainer2/Button" to="." method="_on_restart_click"]
