@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmb3es860hw4t"]
+
+[ext_resource type="Script" uid="uid://xg2me61n6ui6" path="res://Note/note.gd" id="1_55dy1"]
+[ext_resource type="Texture2D" uid="uid://dh1d7w7hl3kig" path="res://Track/lane_temp.png" id="2_yhdbu"]
+
+[node name="Note" type="Node2D"]
+script = ExtResource("1_55dy1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_yhdbu")
