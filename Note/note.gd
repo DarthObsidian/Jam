@@ -6,6 +6,7 @@ var start_y: float
 var target_y: float
 var travel_time: float
 var elapsed_time: float = 0.0
+var duration: float
 var lane: Lane
 
 # Called when the node enters the scene tree for the first time.
@@ -26,9 +27,10 @@ func _process(delta: float) -> void:
 		queue_free()
 	
 	
-func setup(assigned_lane: Lane, color: Color, duration: float) -> void:
+func setup(assigned_lane: Lane, color: Color, travel_time_in: float, duration_in: float) -> void:
 	lane = assigned_lane
-	travel_time = duration
+	travel_time = travel_time_in
+	duration = duration_in
 	
 	$Sprite2D.modulate = color
 	

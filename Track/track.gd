@@ -28,15 +28,11 @@ var spawn_test_note_button: Callable:
 @export var lane_vis_width := 10
 @export var spawn_height_mod := 0.0
 @export var target_height_mod := 0.0
-@export var note_visible_time := 3.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	generate_lanes() # Replace with function body.
-	spawn_note(0)
-	spawn_note(1)
-	spawn_note(2)
-	spawn_note(3)
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -95,13 +91,13 @@ func generate_lanes():
 			lane.owner = get_tree().edited_scene_root
 	
 
-func spawn_note(lane_index: int) -> void:
+func spawn_note(lane_index: int, travel_time: float, duration: float) -> void:
 	if not note_scene:
 		print("ERROR: No note scene assigned")
 		return
 
 	if lane_index < 0 or lane_index >= lane_count:
-		print("ERROR: Invalid lane index: ", lane_index)
+		print("Invalid lane index: ", lane_index)
 		return
 
 	var note := note_scene.instantiate() as Note
@@ -119,7 +115,8 @@ func spawn_note(lane_index: int) -> void:
 	note.setup(
 		lane,
 		color,
-		note_visible_time
+		travel_time,
+		duration
 	) 
 
 
@@ -128,4 +125,4 @@ func spawn_test_note() -> void:
 		return
 		
 	var random_lane = randi() % lane_count
-	spawn_note(random_lane)
+	spawn_note(random_lane, 2.0, 0.0)

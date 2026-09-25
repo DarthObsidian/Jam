@@ -1,0 +1,124 @@
+{
+  "song": "mary_had_a_little_lamb",
+  "bpm": 120,
+  "initial_delay": 4.0,
+  "notes": [
+	{
+		"beat": 1.0,
+	 	"lane": 2
+	},
+	{
+	 	"beat": 2.0,
+	 	"lane": 1
+	},
+	{
+	 	"beat": 3.0,
+	 	"lane": 0
+	},
+	{
+	 	"beat": 4.0,
+	 	"lane": 1
+	},
+	{
+	 	"beat": 5.0,
+	 	"lane": 2
+	},
+	{
+	 	"beat": 6.0,
+	 	"lane": 2
+	},
+	{
+	  	"beat": 7.0,
+	  	"lane": 2,
+		"duration": 2.0
+	},
+	{
+	 	"beat": 9.0,
+	 	"lane": 1
+	},
+	{
+	 	"beat": 10.0,
+	 	"lane": 1
+	},
+	{
+	  	"beat": 11.0,
+	  	"lane": 1,
+		"duration": 2.0
+	},
+	{
+	 	"beat": 13.0,
+	 	"lane": 2
+	},
+	{
+	 	"beat": 14.0,
+	 	"lane": 2
+	},
+	{
+	 	"beat": 14.0,
+	 	"lane": 4
+	},
+	{
+	 	"beat": 15.0,
+	 	"lane": 2,
+		"duration": 2.0
+	},
+	{
+	 	"beat": 15.0,
+	 	"lane": 4,
+		"duration": 2.0
+	},
+	{
+	 	"beat": 17.0,
+	 	"lane": 2
+	},
+	{
+	 	"beat": 18.0,
+	 	"lane": 1
+	},
+	{
+	 	"beat": 19.0,
+	 	"lane": 0
+	},
+	{
+	 	"beat": 20.0,
+	 	"lane": 1
+	},
+	{
+	 	"beat": 21.0,
+	 	"lane": 2
+	},
+	{
+	 	"beat": 22.0,
+	 	"lane": 2
+	},
+	{
+	 	"beat": 23.0,
+	 	"lane": 2
+	},
+	{
+	 	"beat": 24.0,
+	 	"lane": 2
+	},
+	{
+	 	"beat": 25.0,
+	 	"lane": 1
+	},
+	{
+	 	"beat": 26.0,
+	 	"lane": 1
+	},
+	{
+	 	"beat": 27.0,
+	 	"lane": 2
+	},
+	{
+	 	"beat": 28.0,
+	 	"lane": 1
+	},
+	{
+	 	"beat": 29.0,
+	 	"lane": 0,
+		"duration": 4.0
+	}
+  ]
+}
