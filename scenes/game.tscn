@@ -1,7 +1,41 @@
-[gd_scene format=3 uid="uid://b2d4bmi100ubg"]
+[gd_scene load_steps=6 format=3 uid="uid://b2d4bmi100ubg"]
 
-[node name="Game" type="Node2D"]
+[ext_resource type="PackedScene" uid="uid://huxwpcgu4wdb" path="res://scenes/ghost.tscn" id="1_uwrxv"]
+[ext_resource type="Script" uid="uid://b47s6u2f2s1t0" path="res://scripts/game.gd" id="1_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://bnxtn7jwjpvgm" path="res://scenes/combo.tscn" id="3_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://ccduod3a8kegm" path="res://Track/track.tscn" id="4_lbhrr"]
+[ext_resource type="Script" path="res://scripts/song_controller.gd" id="5_iywne"]
 
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 1150.0
-offset_bottom = 646.0
+[node name="Game" type="Node"]
+script = ExtResource("1_yqjtg")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+
+[node name="Ghost" parent="." instance=ExtResource("1_uwrxv")]
+position = Vector2(874.00006, 279)
+scale = Vector2(5, 5)
+
+[node name="Combo" parent="." instance=ExtResource("3_lnu2h")]
+position = Vector2(139, 600)
+scale = Vector2(2, 2)
+
+[node name="Track" parent="." instance=ExtResource("4_lbhrr")]
+position = Vector2(37, 31)
+
+[node name="Song" type="Node" parent="." node_paths=PackedStringArray("track", "music_player")]
+script = ExtResource("5_iywne")
+song_data_file = "res://SongData/song_mhall.json"
+track = NodePath("../Track")
+music_player = NodePath("../Music")
+
+[node name="Points" type="RichTextLabel" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -352.0
+offset_right = -152.0
+offset_bottom = 55.0
+grow_horizontal = 0
+theme_override_font_sizes/normal_font_size = 40
+text = "0"
+horizontal_alignment = 2

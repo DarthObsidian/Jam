@@ -25,8 +25,9 @@ func _process(delta: float) -> void:
 
 	if progress >= 1.0:
 		queue_free()
-	
-	
+		Signalbus.signal_miss.emit()
+
+
 func setup(assigned_lane: Lane, color: Color, travel_time_in: float, duration_in: float) -> void:
 	lane = assigned_lane
 	travel_time = travel_time_in

@@ -50,6 +50,10 @@ func play_perfect() -> void:
 	eyes.play("perfect")
 
 
+func play_good() -> void:
+	eyes.play("good")
+
+
 func play_idle() -> void:
 	body.play("idle")
 	eyes.play("idle")
