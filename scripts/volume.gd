@@ -4,6 +4,7 @@ extends HSlider
 @onready var icon = $"../volIcon"
 
 func _ready() -> void:
+	value = AudioServer.get_bus_volume_linear(master)
 	_on_value_changed(value)
 
 

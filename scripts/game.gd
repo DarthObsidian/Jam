@@ -8,6 +8,7 @@ var gameOver = false
 var gameOverDelay = 0
 @onready var finalScore = $CanvasLayer/Panel/VBoxContainer/HBoxContainer/FinalScore
 @onready var gameOverPanel = $CanvasLayer/Panel
+@onready var points = $CanvasLayer/Points
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -19,7 +20,7 @@ func _add_points() -> void:
 	var oldTotal = totalPoints
 	totalPoints += POINTS * $Combo.get_combo_multiplyer()
 	for i in range(oldTotal, totalPoints+1):
-		$CanvasLayer/Points.text = str(i)
+		points.text = str(i)
 		await get_tree().create_timer(0.01).timeout
 
 
@@ -56,6 +57,7 @@ func _on_restart_click() -> void:
 	gameOverPanel.visible = false
 	gameOverPanel.position.y = 1000
 	totalPoints = 0
+	points.text = str(0)
 	$Combo.clear_combo()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b2d4bmi100ubg"]
+[gd_scene load_steps=12 format=3 uid="uid://b2d4bmi100ubg"]
 
 [ext_resource type="PackedScene" uid="uid://huxwpcgu4wdb" path="res://scenes/ghost.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://b47s6u2f2s1t0" path="res://scripts/game.gd" id="1_yqjtg"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://brxpg3f45g51v" path="res://scenes/combo.tscn" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://ccduod3a8kegm" path="res://Track/track.tscn" id="4_lbhrr"]
 [ext_resource type="Script" uid="uid://7jq3k24lsnel" path="res://scripts/song_controller.gd" id="5_iywne"]
+[ext_resource type="Texture2D" uid="uid://bdlae8xl7vwaq" path="res://assets/placeholder/volume.png" id="7_gee14"]
+[ext_resource type="Script" uid="uid://df5mfubutms13" path="res://scripts/volume.gd" id="8_0tnpc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iywne"]
 content_margin_left = 5.0
@@ -60,7 +62,7 @@ position = Vector2(37, 31)
 
 [node name="Song" type="Node" parent="." node_paths=PackedStringArray("track", "music_player")]
 script = ExtResource("5_iywne")
-song_data_file = "res://SongData/song_mhall.json"
+song_data_file = "res://SongData/song_cozy.json"
 track = NodePath("../Track")
 music_player = NodePath("../Music")
 
@@ -112,12 +114,36 @@ text = "1000"
 layout_mode = 2
 alignment = 1
 
-[node name="Button" type="Button" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer2"]
+[node name="Replay" type="Button" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_iywne")
 theme_override_styles/hover = SubResource("StyleBoxFlat_p57ef")
 theme_override_styles/focus = SubResource("StyleBoxFlat_u5sy4")
 text = "Play Again"
 
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="volIcon" type="Sprite2D" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer3"]
+position = Vector2(175, 10)
+texture = ExtResource("7_gee14")
+hframes = 2
+vframes = 2
+frame = 2
+
+[node name="Control" type="Control" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="volume" type="HSlider" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 0.5
+script = ExtResource("8_0tnpc")
+
 [connection signal="finished" from="Music" to="." method="_on_game_over"]
-[connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/HBoxContainer2/Button" to="." method="_on_restart_click"]
+[connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/HBoxContainer2/Replay" to="." method="_on_restart_click"]
+[connection signal="value_changed" from="CanvasLayer/Panel/VBoxContainer/HBoxContainer3/volume" to="CanvasLayer/Panel/VBoxContainer/HBoxContainer3/volume" method="_on_value_changed"]

@@ -41,12 +41,31 @@ frame = 2
 layout_mode = 0
 offset_left = 162.0
 offset_top = 569.0
-offset_right = 360.0
+offset_right = 362.0
 offset_bottom = 585.0
 max_value = 1.0
 step = 0.01
 value = 0.5
 script = ExtResource("4_mhnvy")
+
+[node name="Label" type="Label" parent="Background"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -135.0
+offset_top = -131.0
+offset_right = -5.0
+offset_bottom = -4.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "By:
+Anna Meyers
+David Solomon
+Jeffrey Meyers
+Matthew Meyers"
 
 [connection signal="pressed" from="Background/PlayButton" to="Background/PlayButton" method="_on_pressed"]
 [connection signal="value_changed" from="Background/volume" to="Background/volume" method="_on_value_changed"]
