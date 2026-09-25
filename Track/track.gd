@@ -126,3 +126,6 @@ func spawn_test_note() -> void:
 		
 	var random_lane = randi() % lane_count
 	spawn_note(random_lane, 2.0, 0.0)
+	
+func attempt_play_note(lane_index: int) -> HitStatus:
+	pass
