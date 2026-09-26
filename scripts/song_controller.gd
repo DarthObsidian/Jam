@@ -145,9 +145,8 @@ func judge_note(lane_index: int) -> Constants.HitStatus:
 	
 	lane.play_hit_visuals(Constants.HitStatus.Miss)	
 	return Constants.HitStatus.Miss
-	
-	
-	
+
+
 func get_best_note_for_lane(lane_index: int) -> Note:
 	if track == null:
 		return null

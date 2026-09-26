@@ -18,7 +18,7 @@ var gameOverDelay = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Signalbus.signal_miss.connect(_on_miss)
-	_on_restart_click()
+	_reset()
 
 
 func _add_points() -> void:
@@ -65,6 +65,10 @@ func _on_game_over() -> void:
 
 
 func _on_restart_click() -> void:
+	$click.play()
+	_reset()
+
+func _reset() -> void:
 	$Song.load_song()
 	gameOver = false
 	gameOverPanel.position.y = get_viewport().get_visible_rect().size.y
