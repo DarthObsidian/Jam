@@ -1,83 +1,75 @@
 {
 	"song": "Cozy_Fall_Jam",
 	"bpm": 94,
-	"offset": 1.0,
+	"offset": 0.0,
 	"notes": [
 		{
-			"beat": 15.5,
-			"lane": 1
-		},
-		{
-			"beat": 16,
-			"lane": 1
-		},
-		{
 			"beat": 16.5,
-			"lane": 0
+			"lane": 1
 		},
 		{
 			"beat": 17,
-			"lane": 2
+			"lane": 1
 		},
 		{
 			"beat": 17.5,
+			"lane": 0
+		},
+		{
+			"beat": 18,
 			"lane": 2
 		},
 		{
 			"beat": 18.5,
-			"lane": 1
-		},
-		{
-			"beat": 19.5,
-			"lane": 0
-		},
-		{
-			"beat": 20,
-			"lane": 1
-		},
-		{
-			"beat": 21,
-			"lane": 0
-		},
-		{
-			"beat": 26.5,
-			"lane": 1
-		},
-		{
-			"beat": 27,
-			"lane": 1
-		},
-		{
-			"beat": 27.5,
-			"lane": 0
-		},
-		{
-			"beat": 28,
 			"lane": 2
 		},
 		{
+			"beat": 19.5,
+			"lane": 1
+		},
+		{
+			"beat": 20.5,
+			"lane": 0
+		},
+		{
+			"beat": 21,
+			"lane": 1
+		},
+		{
+			"beat": 22,
+			"lane": 0
+		},
+		{
+			"beat": 27.5,
+			"lane": 1
+		},
+		{
+			"beat": 28,
+			"lane": 1
+		},
+		{
 			"beat": 28.5,
+			"lane": 0
+		},
+		{
+			"beat": 29,
 			"lane": 2
 		},
 		{
 			"beat": 29.5,
-			"lane": 3
+			"lane": 2
 		},
 		{
 			"beat": 30.5,
+			"lane": 3
+		},
+		{
+			"beat": 31.5,
 			"lane": 2
 		},
 		{
-			"beat": 31,
+			"beat": 32,
 			"lane": 2
-		},
-		{
-			"beat": 38.5,
-			"lane": 0
-		},
-		{
-			"beat": 39,
-			"lane": 1
 		},
 		{
 			"beat": 39.5,
@@ -85,87 +77,87 @@
 		},
 		{
 			"beat": 40,
-			"lane": 2
+			"lane": 1
 		},
 		{
 			"beat": 40.5,
+			"lane": 0
+		},
+		{
+			"beat": 41,
 			"lane": 2
 		},
 		{
 			"beat": 41.5,
-			"lane": 1
+			"lane": 2
 		},
 		{
-			"beat": 42,
-			"lane": 2
+			"beat": 42.5,
+			"lane": 1
 		},
 		{
 			"beat": 43,
-			"lane": 3
+			"lane": 2
 		},
 		{
 			"beat": 44,
-			"lane": 2
+			"lane": 3
 		},
 		{
-			"beat": 44.5,
-			"lane": 1
+			"beat": 45,
+			"lane": 2
 		},
 		{
 			"beat": 45.5,
-			"lane": 0
+			"lane": 1
 		},
 		{
-			"beat": 46,
-			"lane": 1
+			"beat": 46.5,
+			"lane": 0
 		},
 		{
 			"beat": 47,
+			"lane": 1
+		},
+		{
+			"beat": 48,
 			"lane": 2
-		},
-		{
-			"beat": 55.5,
-			"lane": 1
-		},
-		{
-			"beat": 56,
-			"lane": 1
 		},
 		{
 			"beat": 56.5,
-			"lane": 0
+			"lane": 1
 		},
 		{
 			"beat": 57,
-			"lane": 2
+			"lane": 1
 		},
 		{
 			"beat": 57.5,
+			"lane": 0
+		},
+		{
+			"beat": 58,
 			"lane": 2
 		},
 		{
 			"beat": 58.5,
-			"lane": 1
+			"lane": 2
 		},
 		{
 			"beat": 59.5,
-			"lane": 0
+			"lane": 1
 		},
 		{
-			"beat": 60,
-			"lane": 1
+			"beat": 60.5,
+			"lane": 0
 		},
 		{
 			"beat": 61,
-			"lane": 0
-		},
-		{
-			"beat": 66.5,
-			"lane": 0
-		},
-		{
-			"beat": 67,
 			"lane": 1
+		},
+		{
+			"beat": 62,
+			"lane": 0
 		},
 		{
 			"beat": 67.5,
@@ -173,30 +165,30 @@
 		},
 		{
 			"beat": 68,
-			"lane": 2
+			"lane": 1
 		},
 		{
 			"beat": 68.5,
+			"lane": 0
+		},
+		{
+			"beat": 69,
 			"lane": 2
 		},
 		{
 			"beat": 69.5,
-			"lane": 1
-		},
-		{
-			"beat": 70.5,
-			"lane": 3
-		},
-		{
-			"beat": 71,
-			"lane": 3
-		},
-		{
-			"beat": 74.5,
 			"lane": 2
 		},
 		{
-			"beat": 75,
+			"beat": 70.5,
+			"lane": 1
+		},
+		{
+			"beat": 71.5,
+			"lane": 3
+		},
+		{
+			"beat": 72,
 			"lane": 3
 		},
 		{
@@ -205,19 +197,19 @@
 		},
 		{
 			"beat": 76,
-			"lane": 1
+			"lane": 3
 		},
 		{
 			"beat": 76.5,
-			"lane": 0
-		},
-		{
-			"beat": 78.5,
 			"lane": 2
 		},
 		{
-			"beat": 79,
-			"lane": 3
+			"beat": 77,
+			"lane": 1
+		},
+		{
+			"beat": 77.5,
+			"lane": 0
 		},
 		{
 			"beat": 79.5,
@@ -225,75 +217,75 @@
 		},
 		{
 			"beat": 80,
-			"lane": 1
+			"lane": 3
 		},
 		{
 			"beat": 80.5,
-			"lane": 0
+			"lane": 2
 		},
 		{
-			"beat": 82,
+			"beat": 81,
+			"lane": 1
+		},
+		{
+			"beat": 81.5,
 			"lane": 0
 		},
 		{
 			"beat": 83,
-			"lane": 1
+			"lane": 0
 		},
 		{
-			"beat": 123,
-			"lane": 2
-		},
-		{
-			"beat": 123.5,
+			"beat": 84,
 			"lane": 1
 		},
 		{
 			"beat": 124,
-			"lane": 0
+			"lane": 2
 		},
 		{
 			"beat": 124.5,
 			"lane": 1
 		},
 		{
+			"beat": 125,
+			"lane": 0
+		},
+		{
 			"beat": 125.5,
-			"lane": 3
-		},
-		{
-			"beat": 126.5,
-			"lane": 2
-		},
-		{
-			"beat": 131,
-			"lane": 2
-		},
-		{
-			"beat": 131.5,
 			"lane": 1
 		},
 		{
+			"beat": 126.5,
+			"lane": 3
+		},
+		{
+			"beat": 127.5,
+			"lane": 2
+		},
+		{
 			"beat": 132,
-			"lane": 0
+			"lane": 2
 		},
 		{
 			"beat": 132.5,
 			"lane": 1
 		},
 		{
+			"beat": 133,
+			"lane": 0
+		},
+		{
 			"beat": 133.5,
-			"lane": 3
-		},
-		{
-			"beat": 134.5,
-			"lane": 2
-		},
-		{
-			"beat": 139,
 			"lane": 1
 		},
 		{
-			"beat": 139.5,
-			"lane": 0
+			"beat": 134.5,
+			"lane": 3
+		},
+		{
+			"beat": 135.5,
+			"lane": 2
 		},
 		{
 			"beat": 140,
@@ -301,7 +293,11 @@
 		},
 		{
 			"beat": 140.5,
-			"lane": 2
+			"lane": 0
+		},
+		{
+			"beat": 141,
+			"lane": 1
 		},
 		{
 			"beat": 141.5,
@@ -312,104 +308,100 @@
 			"lane": 2
 		},
 		{
-			"beat": 143,
-			"lane": 3
+			"beat": 143.5,
+			"lane": 2
 		},
 		{
 			"beat": 144,
-			"lane": 2
+			"lane": 3
 		},
 		{
 			"beat": 145,
+			"lane": 2
+		},
+		{
+			"beat": 146,
 			"lane": 1
 		},
 		{
-			"beat": 145.5,
+			"beat": 146.5,
 			"lane": 0
 		},
 		{
-			"beat": 147,
+			"beat": 148,
 			"lane": 2
 		},
 		{
-			"beat": 149,
+			"beat": 150,
 			"lane": 3
-		},
-		{
-			"beat": 151.5,
-			"lane": 1
-		},
-		{
-			"beat": 152,
-			"lane": 2
 		},
 		{
 			"beat": 152.5,
-			"lane": 0
+			"lane": 1
 		},
 		{
 			"beat": 153,
-			"lane": 3
-		},
-		{
-			"beat": 153.5,
 			"lane": 2
 		},
 		{
-			"beat": 154.5,
-			"lane": 1
-		},
-		{
-			"beat": 155.5,
+			"beat": 153.5,
 			"lane": 0
 		},
 		{
-			"beat": 156,
+			"beat": 154,
+			"lane": 3
+		},
+		{
+			"beat": 154.5,
+			"lane": 2
+		},
+		{
+			"beat": 155.5,
 			"lane": 1
+		},
+		{
+			"beat": 156.5,
+			"lane": 0
 		},
 		{
 			"beat": 157,
 			"lane": 1
 		},
 		{
-			"beat": 162.5,
+			"beat": 158,
 			"lane": 1
-		},
-		{
-			"beat": 163,
-			"lane": 2
 		},
 		{
 			"beat": 163.5,
-			"lane": 0
+			"lane": 1
 		},
 		{
 			"beat": 164,
-			"lane": 3
-		},
-		{
-			"beat": 164.5,
 			"lane": 2
 		},
 		{
+			"beat": 164.5,
+			"lane": 0
+		},
+		{
+			"beat": 165,
+			"lane": 3
+		},
+		{
 			"beat": 165.5,
-			"lane": 3 
+			"lane": 2
 		},
 		{
 			"beat": 166.5,
+			"lane": 3 
+		},
+		{
+			"beat": 167.5,
 			"lane": 1
 		},
 		{
-			"beat": 167,
+			"beat": 168,
 			"lane": 0
-		},
-		{
-			"beat": 174.5,
-			"lane": 0
-		},
-		{
-			"beat": 175,
-			"lane": 1
 		},
 		{
 			"beat": 175.5,
@@ -417,42 +409,50 @@
 		},
 		{
 			"beat": 176,
-			"lane": 2
+			"lane": 1
 		},
 		{
 			"beat": 176.5,
+			"lane": 0
+		},
+		{
+			"beat": 177,
 			"lane": 2
 		},
 		{
 			"beat": 177.5,
-			"lane": 1
+			"lane": 2
 		},
 		{
-			"beat": 178,
-			"lane": 2
+			"beat": 178.5,
+			"lane": 1
 		},
 		{
 			"beat": 179,
-			"lane": 3
-		},
-		{
-			"beat": 180,
 			"lane": 2
 		},
 		{
-			"beat": 180.5,
-			"lane": 1
+			"beat": 180,
+			"lane": 3
+		},
+		{
+			"beat": 181,
+			"lane": 2
 		},
 		{
 			"beat": 181.5,
-			"lane": 0
-		},
-		{
-			"beat": 182,
 			"lane": 1
 		},
 		{
+			"beat": 182.5,
+			"lane": 0
+		},
+		{
 			"beat": 183,
+			"lane": 1
+		},
+		{
+			"beat": 184,
 			"lane": 1
 		},
 	]

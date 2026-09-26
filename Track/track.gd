@@ -85,7 +85,7 @@ func generate_lanes():
 			lane.owner = get_tree().edited_scene_root
 	
 
-func spawn_note(song_controller: SongController, lane_index: int, hit_time: float, travel_time: float, duration: float) -> void:
+func spawn_note(song_controller: SongController, lane_index: int, hit_beat: float, travel_beats: float, duration: float) -> void:
 	if not note_scene:
 		print("ERROR: No note scene assigned")
 		return
@@ -109,11 +109,11 @@ func spawn_note(song_controller: SongController, lane_index: int, hit_time: floa
 		lane,
 		song_controller,
 		color,
-		hit_time,
-		travel_time,
+		hit_beat,
+		travel_beats,
 		duration
 	) 
-func spawn_measure_bar(note_travel_time: float) -> void:
+func spawn_measure_bar(song_controller: SongController, note_travel_beats: float) -> void:
 	if not measure_scene:
 		print("ERROR: No measure scene assigned")
 		return
@@ -126,10 +126,11 @@ func spawn_measure_bar(note_travel_time: float) -> void:
 	var measure_target_position := Vector2(track_size.x/2.0, track_size.y - target_height_mod)
 
 	measure_bar.setup(
+		song_controller,
 		self,
 		measure_spawn_position,
 		measure_target_position,
-		note_travel_time
+		note_travel_beats
 	) 
 	
 

@@ -24,21 +24,20 @@ var next_note_index: int = 0
 var bpm: float = 120.0
 var initial_delay: float = 0.0
 var offset: float = 0.0
-var notes_per_measure : float= 4.0
+var notes_per_measure : float = 4.0
 
 var next_measure_beat: float = 0.0
-var song_time_temp: float = 0.0
-
+var song_beat : float = 0.0
 
 func _ready() -> void:
 	pass
 
 
 func _process(_delta: float) -> void:
-	var song_time := get_song_time()
-	spawn_notes(song_time)
+	song_beat = music_player.get_playback_position() * (bpm/60)
+	spawn_notes(song_beat)
 	
-	if(song_time >= next_measure_beat):
+	if(song_beat >= next_measure_beat):
 		spawn_measure_bar()
 		next_measure_beat += notes_per_measure
 
@@ -79,25 +78,18 @@ func load_song() -> void:
 	print("Offset: ", offset)
 	print("Notes: ", notes.size())
 	next_measure_beat = 0.0
-	note_travel_time = notes_per_measure / (bpm/60)
+	note_travel_time = notes_per_measure
 	music_player.play()
 
 
-func get_song_time() -> float:
-	if music_player == null:
-		return 0.0
-	return music_player.get_playback_position() * (bpm/60)
-	
-func get_song_time_unscaled() -> float:
-	if music_player == null:
-		return 0.0
-	return music_player.get_playback_position()
+func get_song_beat() -> float:
+	return song_beat
 
 func spawn_notes(song_time: float) -> void:
 	while next_note_index < notes.size():
 		var note_data: Dictionary = notes[next_note_index]
 
-		var hit_time: float = note_data.get("beat", 0.0) + initial_delay
+		var hit_time: float = note_data.get("beat", 0.0)
 		var spawn_time := hit_time - note_travel_time
 
 		if song_time < spawn_time:
@@ -114,7 +106,7 @@ func spawn_note(note_data: Dictionary) -> void:
 		return
 
 	var lane: int = note_data.get("lane", 0)
-	var hit_time: float = note_data.get("beat", 0.0) + initial_delay + note_travel_time
+	var hit_time: float = note_data.get("beat", 0.0)
 	var duration: float = note_data.get("duration", 0.0)
 
 	track.spawn_note(
@@ -127,7 +119,7 @@ func spawn_note(note_data: Dictionary) -> void:
 
 
 func judge_note(lane_index: int) -> Constants.HitStatus:	
-	var player_time : float = get_song_time() + offset
+	var player_beat: float = get_song_beat()
 
 	var note := get_best_note_for_lane(lane_index)
 	var lane := track.lanes.get_child(lane_index) as Lane
@@ -140,9 +132,9 @@ func judge_note(lane_index: int) -> Constants.HitStatus:
 		lane.play_hit_visuals(Constants.HitStatus.Miss)
 		return Constants.HitStatus.Miss
 
-	var difference : float = abs(player_time - note.hit_time)
+	var difference : float = abs(player_beat - note.hit_beat)
 	
-	print("Note hit time: ", note.hit_time, " player time: ", player_time, " Difference: ", difference)
+	print("Note hit beat: ", note.hit_beat, " player beat: ", player_beat, " Difference: ", difference)
 	
 	if difference <= perfect_window:
 		lane.play_hit_visuals(Constants.HitStatus.Perfect)
@@ -169,12 +161,12 @@ func get_best_note_for_lane(lane_index: int) -> Note:
 
 	var best_note:Note = null
 	var best_difference := INF
-	var player_time := get_song_time()
+	var player_beat := get_song_beat()
 
 	for child in lane.get_children():
 		if child is Note:
 			var note := child as Note
-			var difference : float = abs(player_time - note.hit_time)
+			var difference : float = abs(player_beat - note.hit_beat)
 
 			if difference < best_difference:
 				best_difference = difference
@@ -186,5 +178,5 @@ func spawn_measure_bar() -> void:
 	if track == null:
 		push_error("SongController: No Track assigned.")
 		return
-	track.spawn_measure_bar(note_travel_time)
+	track.spawn_measure_bar(self, note_travel_time)
 	
