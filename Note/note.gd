@@ -2,8 +2,6 @@
 class_name Note
 extends Node2D
 
-var start_y: float
-var target_y: float
 var travel_time: float
 var hit_time: float
 var elapsed_time: float = 0.0

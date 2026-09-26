@@ -6,6 +6,7 @@ extends Node2D
 @export var lanes: Node2D
 @export var note_scene: PackedScene
 @export var lane_scene: PackedScene
+@export var measure_scene: PackedScene
 
 @export_tool_button("Spawn Test Note")
 var spawn_test_note_button: Callable:
@@ -27,7 +28,7 @@ var spawn_test_note_button: Callable:
 
 @export var lane_vis_width := 10
 @export var spawn_height_mod := 0.0
-@export var target_height_mod : float = 0.0:
+@export var target_height_mod := 0.0:
 	set(value): 
 		target_height_mod = max(0.0, value)
 		if Engine.is_editor_hint():
@@ -61,8 +62,7 @@ func generate_lanes():
 		
 	print("Generating ", lane_count, " lanes")	
 	
-	var track_rect = background.get_rect()
-	var track_size = track_rect.size
+	var track_size = get_track_size()
 	var lane_width = track_size.x / lane_count
 	
 	print("Track size: ", track_size)
@@ -104,11 +104,12 @@ func spawn_note(lane_index: int, hit_time: float, travel_time: float, duration: 
 	var lane := lanes.get_child(lane_index)
 	lane.add_child(note)
 
-	var track_size := background.texture.get_size()
+	var track_size := get_track_size()
 	var lane_width := track_size.x / lane_count
 
 	var color := lane_colors[lane_index % lane_colors.size()]
 
+	note.z_index = 1
 	note.setup(
 		lane,
 		color,
@@ -116,10 +117,31 @@ func spawn_note(lane_index: int, hit_time: float, travel_time: float, duration: 
 		travel_time,
 		duration
 	) 
+func spawn_measure_bar(note_travel_time: float) -> void:
+	if not measure_scene:
+		print("ERROR: No measure scene assigned")
+		return
 
+	var measure_bar := measure_scene.instantiate() as MeasureBar
+
+	add_child(measure_bar)
+	var track_size := get_track_size()
+	var measure_spawn_position :=  Vector2(track_size.x/2.0, spawn_height_mod)
+	var measure_target_position := Vector2(track_size.x/2.0, track_size.y - target_height_mod)
+
+	measure_bar.setup(
+		self,
+		measure_spawn_position,
+		measure_target_position,
+		note_travel_time
+	) 
+	
 func spawn_test_note() -> void:
 	if not Engine.is_editor_hint():
 		return
 		
 	var random_lane = randi() % lane_count
 	spawn_note(random_lane, 0, 2.0, 0.0)
+	
+func get_track_size() -> Vector2:
+	return background.size

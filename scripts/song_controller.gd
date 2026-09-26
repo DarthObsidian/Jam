@@ -24,8 +24,9 @@ var next_note_index: int = 0
 var bpm: float = 120.0
 var initial_delay: float = 0.0
 var offset: float = 0.0
+var notes_per_measure : float= 4.0
 
-
+var next_measure_beat: float = 0.0
 var song_time_temp: float = 0.0
 
 
@@ -36,6 +37,10 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	var song_time := get_song_time()
 	spawn_notes(song_time)
+	
+	if(song_time >= next_measure_beat):
+		spawn_measure_bar()
+		next_measure_beat += notes_per_measure
 
 
 func load_song() -> void:
@@ -73,7 +78,8 @@ func load_song() -> void:
 	print("BPM: ", bpm)
 	print("Offset: ", offset)
 	print("Notes: ", notes.size())
-	
+	next_measure_beat = 0.0
+	note_travel_time = notes_per_measure / (bpm/60)
 	music_player.play()
 
 
@@ -170,3 +176,10 @@ func get_best_note_for_lane(lane_index: int) -> Note:
 				best_note = child
 
 	return best_note
+
+func spawn_measure_bar() -> void:
+	if track == null:
+		push_error("SongController: No Track assigned.")
+		return
+	track.spawn_measure_bar(note_travel_time)
+	

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://vfmaax516kcn"]
+
+[ext_resource type="Script" uid="uid://lbj0jih865am" path="res://Track/Lane/measure_bar.gd" id="1_ef1ik"]
+[ext_resource type="Texture2D" uid="uid://dntrhmivmnt12" path="res://assets/placeholder/measure.png" id="1_ju3rt"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_ef1ik")
+
+[node name="MeasureBarImage" type="TextureRect" parent="."]
+offset_left = -100.0
+offset_top = -29.0
+offset_right = 100.0
+offset_bottom = 29.0
+texture = ExtResource("1_ju3rt")

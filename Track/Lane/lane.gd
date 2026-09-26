@@ -25,15 +25,15 @@ func setup(top_offset: float, bottom_offset: float) -> void:
 	
 func get_spawn_position() -> Vector2:
 	return Vector2(
-		lane_size .x / 2.0,
+		lane_size.x / 2.0,
 		spawn_offset
 	)
 
 
 func get_target_position() -> Vector2:
 	return Vector2(
-		lane_size .x / 2.0,
-		lane_size .y - target_offset
+		lane_size.x / 2.0,
+		lane_size.y - target_offset
 	)
 
 func play_hit_visuals(hit_status: Constants.HitStatus) -> void:
