@@ -3,6 +3,7 @@
 .nomedia
 *.aseprite
 *.avi
+bin/
 
 # Godot-specific ignores
 .import/

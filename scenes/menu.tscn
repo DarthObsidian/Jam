@@ -7,58 +7,95 @@
 
 [node name="root" type="Node2D"]
 
-[node name="Background" type="TextureRect" parent="."]
-offset_right = 1155.0
-offset_bottom = 651.0
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+ratio = 1.778
+stretch_mode = 0
+
+[node name="Background" type="TextureRect" parent="CanvasLayer/AspectRatioContainer"]
+layout_mode = 2
 texture = ExtResource("1_yqeox")
 
-[node name="Title" type="Label" parent="Background"]
-layout_mode = 0
-offset_left = 363.0
-offset_top = 165.0
-offset_right = 782.0
-offset_bottom = 248.0
+[node name="Title" type="Label" parent="CanvasLayer/AspectRatioContainer/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -212.0
+offset_top = -155.99997
+offset_right = 207.0
+offset_bottom = -72.99997
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 60
 text = "Ghost-guy jam"
 
-[node name="PlayButton" type="Button" parent="Background"]
-layout_mode = 0
-offset_left = 477.0
-offset_top = 373.0
-offset_right = 674.0
-offset_bottom = 417.0
+[node name="PlayButton" type="Button" parent="CanvasLayer/AspectRatioContainer/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.5
+offset_top = -22.0
+offset_right = 98.5
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Play"
 script = ExtResource("2_vjb58")
 
-[node name="volIcon" type="Sprite2D" parent="Background"]
-position = Vector2(137, 578)
-texture = ExtResource("3_con2f")
-hframes = 2
-vframes = 2
-frame = 2
+[node name="Control" type="Control" parent="CanvasLayer/AspectRatioContainer/Background"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
 
-[node name="volume" type="HSlider" parent="Background"]
-layout_mode = 0
-offset_left = 162.0
-offset_top = 569.0
-offset_right = 362.0
-offset_bottom = 585.0
+[node name="volume" type="HSlider" parent="CanvasLayer/AspectRatioContainer/Background/Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 177.0
+offset_top = -78.95947
+offset_right = 377.0
+offset_bottom = -62.959473
+grow_vertical = 0
 max_value = 1.0
 step = 0.01
 value = 0.5
 script = ExtResource("4_mhnvy")
 
-[node name="Label" type="Label" parent="Background"]
+[node name="volIcon" type="Sprite2D" parent="CanvasLayer/AspectRatioContainer/Background/Control"]
+position = Vector2(137, -29.918945)
+texture = ExtResource("3_con2f")
+hframes = 2
+vframes = 2
+frame = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/AspectRatioContainer/Background"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -135.0
-offset_top = -131.0
-offset_right = -5.0
-offset_bottom = -4.0
+offset_left = -180.0
+offset_top = -170.95947
+offset_right = -50.0
+offset_bottom = -43.959473
 grow_horizontal = 0
 grow_vertical = 0
 text = "By:
@@ -67,5 +104,5 @@ David Solomon
 Jeffrey Meyers
 Matthew Meyers"
 
-[connection signal="pressed" from="Background/PlayButton" to="Background/PlayButton" method="_on_pressed"]
-[connection signal="value_changed" from="Background/volume" to="Background/volume" method="_on_value_changed"]
+[connection signal="pressed" from="CanvasLayer/AspectRatioContainer/Background/PlayButton" to="CanvasLayer/AspectRatioContainer/Background/PlayButton" method="_on_pressed"]
+[connection signal="value_changed" from="CanvasLayer/AspectRatioContainer/Background/Control/volume" to="CanvasLayer/AspectRatioContainer/Background/Control/volume" method="_on_value_changed"]

@@ -58,12 +58,10 @@ position = Vector2(139, 600)
 scale = Vector2(2, 2)
 
 [node name="Track" parent="." instance=ExtResource("4_lbhrr")]
-position = Vector2(37, 31)
 
-[node name="Song" type="Node" parent="." node_paths=PackedStringArray("track", "music_player")]
+[node name="Song" type="Node" parent="." node_paths=PackedStringArray("music_player")]
 script = ExtResource("5_iywne")
 song_data_file = "res://SongData/song_cozy.json"
-track = NodePath("../Track")
 music_player = NodePath("../Music")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -80,75 +78,82 @@ theme_override_font_sizes/normal_font_size = 40
 text = "0"
 horizontal_alignment = 2
 
-[node name="Panel" type="Panel" parent="CanvasLayer"]
-offset_left = 318.0
-offset_top = 140.0
-offset_right = 860.0
-offset_bottom = 468.0
+[node name="GameOverPanel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -271.0
+offset_top = -164.0
+offset_right = 271.0
+offset_bottom = 164.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/GameOverPanel"]
 layout_mode = 0
 offset_right = 542.0
 offset_bottom = 328.0
 theme_override_constants/separation = 50
 alignment = 1
 
-[node name="Label" type="Label" parent="CanvasLayer/Panel/VBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/GameOverPanel/VBoxContainer"]
 layout_mode = 2
 text = "Thank you for playing!"
 horizontal_alignment = 1
 
-[node name="ScoreBox" type="HBoxContainer" parent="CanvasLayer/Panel/VBoxContainer"]
+[node name="ScoreBox" type="HBoxContainer" parent="CanvasLayer/GameOverPanel/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label2" type="Label" parent="CanvasLayer/Panel/VBoxContainer/ScoreBox"]
+[node name="Label2" type="Label" parent="CanvasLayer/GameOverPanel/VBoxContainer/ScoreBox"]
 layout_mode = 2
 text = "Score:"
 
-[node name="FinalScore" type="Label" parent="CanvasLayer/Panel/VBoxContainer/ScoreBox"]
+[node name="FinalScore" type="Label" parent="CanvasLayer/GameOverPanel/VBoxContainer/ScoreBox"]
 layout_mode = 2
 text = "1000"
 
-[node name="HighScoreBox" type="HBoxContainer" parent="CanvasLayer/Panel/VBoxContainer"]
+[node name="HighScoreBox" type="HBoxContainer" parent="CanvasLayer/GameOverPanel/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="HighScoreLabel" type="Label" parent="CanvasLayer/Panel/VBoxContainer/HighScoreBox"]
+[node name="HighScoreLabel" type="Label" parent="CanvasLayer/GameOverPanel/VBoxContainer/HighScoreBox"]
 layout_mode = 2
 text = "High Score:"
 
-[node name="HighScore" type="Label" parent="CanvasLayer/Panel/VBoxContainer/HighScoreBox"]
+[node name="HighScore" type="Label" parent="CanvasLayer/GameOverPanel/VBoxContainer/HighScoreBox"]
 layout_mode = 2
 text = "1000"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/Panel/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/GameOverPanel/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Replay" type="Button" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer2"]
+[node name="Replay" type="Button" parent="CanvasLayer/GameOverPanel/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_iywne")
 theme_override_styles/hover = SubResource("StyleBoxFlat_p57ef")
 theme_override_styles/focus = SubResource("StyleBoxFlat_u5sy4")
 text = "Play Again"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/Panel/VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/GameOverPanel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="volIcon" type="Sprite2D" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer3"]
+[node name="volIcon" type="Sprite2D" parent="CanvasLayer/GameOverPanel/VBoxContainer/HBoxContainer3"]
 position = Vector2(175, 10)
 texture = ExtResource("7_gee14")
 hframes = 2
 vframes = 2
 frame = 2
 
-[node name="Control" type="Control" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer3"]
+[node name="Control" type="Control" parent="CanvasLayer/GameOverPanel/VBoxContainer/HBoxContainer3"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 
-[node name="volume" type="HSlider" parent="CanvasLayer/Panel/VBoxContainer/HBoxContainer3"]
+[node name="volume" type="HSlider" parent="CanvasLayer/GameOverPanel/VBoxContainer/HBoxContainer3"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 max_value = 1.0
@@ -157,5 +162,5 @@ value = 0.5
 script = ExtResource("8_0tnpc")
 
 [connection signal="finished" from="Music" to="." method="_on_game_over"]
-[connection signal="pressed" from="CanvasLayer/Panel/VBoxContainer/HBoxContainer2/Replay" to="." method="_on_restart_click"]
-[connection signal="value_changed" from="CanvasLayer/Panel/VBoxContainer/HBoxContainer3/volume" to="CanvasLayer/Panel/VBoxContainer/HBoxContainer3/volume" method="_on_value_changed"]
+[connection signal="pressed" from="CanvasLayer/GameOverPanel/VBoxContainer/HBoxContainer2/Replay" to="." method="_on_restart_click"]
+[connection signal="value_changed" from="CanvasLayer/GameOverPanel/VBoxContainer/HBoxContainer3/volume" to="CanvasLayer/GameOverPanel/VBoxContainer/HBoxContainer3/volume" method="_on_value_changed"]

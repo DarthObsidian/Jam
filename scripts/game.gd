@@ -7,12 +7,12 @@ const POINTS = 5
 const WAIT = 2
 var gameOver = false
 var gameOverDelay = 0
-@onready var finalScore = $CanvasLayer/Panel/VBoxContainer/ScoreBox/FinalScore
-@onready var highScoreText = $CanvasLayer/Panel/VBoxContainer/HighScoreBox/HighScore
-@onready var scoreBox = $CanvasLayer/Panel/VBoxContainer/ScoreBox
-@onready var highScoreBox = $CanvasLayer/Panel/VBoxContainer/HighScoreBox
-@onready var highScoreLabel = $CanvasLayer/Panel/VBoxContainer/HighScoreBox/HighScoreLabel
-@onready var gameOverPanel = $CanvasLayer/Panel
+@onready var finalScore = $CanvasLayer/GameOverPanel/VBoxContainer/ScoreBox/FinalScore
+@onready var highScoreText = $CanvasLayer/GameOverPanel/VBoxContainer/HighScoreBox/HighScore
+@onready var scoreBox = $CanvasLayer/GameOverPanel/VBoxContainer/ScoreBox
+@onready var highScoreBox = $CanvasLayer/GameOverPanel/VBoxContainer/HighScoreBox
+@onready var highScoreLabel = $CanvasLayer/GameOverPanel/VBoxContainer/HighScoreBox/HighScoreLabel
+@onready var gameOverPanel = $CanvasLayer/GameOverPanel
 @onready var points = $CanvasLayer/Points
 
 # Called when the node enters the scene tree for the first time.
@@ -67,8 +67,7 @@ func _on_game_over() -> void:
 func _on_restart_click() -> void:
 	$Song.load_song()
 	gameOver = false
-	gameOverPanel.visible = false
-	gameOverPanel.position.y = 1000
+	gameOverPanel.position.y = get_viewport().get_visible_rect().size.y
 	totalPoints = 0
 	points.text = str(0)
 	$Combo.clear_combo()
@@ -93,5 +92,6 @@ func _process(delta: float) -> void:
 		_do_hit(hitStatus)
 	else:
 		gameOverDelay += delta
-		if gameOverDelay >= WAIT and gameOverPanel.position.y > 141.0:
-			gameOverPanel.position.y = lerp(gameOverPanel.position.y, 140.0, delta * 5)
+		var desiredPos = (get_viewport().get_visible_rect().size.y / 2) - (gameOverPanel.size.y / 2)
+		if gameOverDelay >= WAIT and gameOverPanel.position.y > desiredPos - 5:
+			gameOverPanel.position.y = lerp(gameOverPanel.position.y, desiredPos, delta * 5)
