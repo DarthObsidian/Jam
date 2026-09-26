@@ -186,6 +186,7 @@ script = ExtResource("1_l5lq6")
 
 [node name="body" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+position = Vector2(0, 10)
 scale = Vector2(0.986, 1)
 sprite_frames = SubResource("SpriteFrames_l5lq6")
 animation = &"idle"
@@ -196,24 +197,31 @@ position = Vector2(0, -11)
 sprite_frames = SubResource("SpriteFrames_5mfnq")
 animation = &"idle"
 
-[node name="drum_right" type="AnimatedSprite2D" parent="body"]
-position = Vector2(9.127789, 33)
+[node name="drum_right" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(10.88147, 39.239998)
+scale = Vector2(0.986, 1)
 sprite_frames = SubResource("SpriteFrames_8ky03")
 animation = &"idle"
 
-[node name="drum_left" type="AnimatedSprite2D" parent="body"]
-position = Vector2(-16.22718, 32)
+[node name="drum_left" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-11.223999, 39)
+scale = Vector2(0.986, 1)
 sprite_frames = SubResource("SpriteFrames_8ky03")
 animation = &"idle"
 
-[node name="cymbol_right" type="AnimatedSprite2D" parent="body"]
-position = Vector2(31.44016, 21)
-scale = Vector2(1.5775864, 1.59375)
+[node name="cymbol_right" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(28, 22.000002)
+scale = Vector2(1.5555001, 1.59375)
 sprite_frames = SubResource("SpriteFrames_pe3fk")
 animation = &"idle"
 
-[node name="cymbol_left" type="AnimatedSprite2D" parent="body"]
-position = Vector2(-33.46856, 20)
-scale = Vector2(-1.578, 1.61)
+[node name="cymbol_left" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-29.105469, 20.760002)
+rotation = 3.1415927
+scale = Vector2(1.555908, -1.61)
 sprite_frames = SubResource("SpriteFrames_pe3fk")
-animation = &"hit"
+animation = &"idle"

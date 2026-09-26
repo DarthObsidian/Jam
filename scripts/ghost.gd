@@ -3,10 +3,10 @@ extends Node2D
 
 @onready var eyes = $body/eyes
 @onready var body = $body
-@onready var drum_right = $body/drum_right
-@onready var drum_left = $body/drum_left
-@onready var cymbol_right = $body/cymbol_right
-@onready var cymbol_left = $body/cymbol_left
+@onready var drum_right = $drum_right
+@onready var drum_left = $drum_left
+@onready var cymbol_right = $cymbol_right
+@onready var cymbol_left = $cymbol_left
 
 
 func _ready() -> void:

@@ -7,6 +7,8 @@ const POINTS = 5
 const WAIT = 2
 var gameOver = false
 var gameOverDelay = 0
+var metronomeLoopCount = 0
+
 @onready var finalScore = $CanvasLayer/GameOverPanel/VBoxContainer/ScoreBox/FinalScore
 @onready var highScoreText = $CanvasLayer/GameOverPanel/VBoxContainer/HighScoreBox/HighScore
 @onready var scoreBox = $CanvasLayer/GameOverPanel/VBoxContainer/ScoreBox
@@ -19,6 +21,13 @@ var gameOverDelay = 0
 func _ready() -> void:
 	Signalbus.signal_miss.connect(_on_miss)
 	_reset()
+
+
+func _metronome() -> void:
+	if metronomeLoopCount < 1:
+		$Metronome.play()
+		metronomeLoopCount += 1
+	
 
 
 func _notification(what: int) -> void:
@@ -76,6 +85,8 @@ func _on_restart_click() -> void:
 	_reset()
 
 func _reset() -> void:
+	metronomeLoopCount = 0
+	$Metronome.play()
 	$Song.load_song()
 	gameOver = false
 	gameOverPanel.position.y = get_viewport().get_visible_rect().size.y

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b2d4bmi100ubg"]
+[gd_scene load_steps=14 format=3 uid="uid://b2d4bmi100ubg"]
 
 [ext_resource type="PackedScene" uid="uid://huxwpcgu4wdb" path="res://scenes/ghost.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://b47s6u2f2s1t0" path="res://scripts/game.gd" id="1_yqjtg"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://l0c10lghld0v" path="res://assets/music/CozyFallJam.wav" id="2_gee14"]
 [ext_resource type="PackedScene" uid="uid://brxpg3f45g51v" path="res://scenes/combo.tscn" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://ccduod3a8kegm" path="res://Track/track.tscn" id="4_lbhrr"]
+[ext_resource type="AudioStream" uid="uid://drdk3jgrmmjo3" path="res://assets/music/metronome.wav" id="4_vtaks"]
 [ext_resource type="Script" uid="uid://7jq3k24lsnel" path="res://scripts/song_controller.gd" id="5_iywne"]
 [ext_resource type="Texture2D" uid="uid://bdlae8xl7vwaq" path="res://assets/placeholder/volume.png" id="7_gee14"]
 [ext_resource type="Script" uid="uid://df5mfubutms13" path="res://scripts/volume.gd" id="8_0tnpc"]
@@ -53,6 +54,9 @@ stream = ExtResource("2_0tnpc")
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_gee14")
 
+[node name="Metronome" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_vtaks")
+
 [node name="Ghost" parent="." instance=ExtResource("1_uwrxv")]
 position = Vector2(874.00006, 279)
 scale = Vector2(5, 5)
@@ -86,6 +90,7 @@ text = "0"
 horizontal_alignment = 2
 
 [node name="GameOverPanel" type="Panel" parent="CanvasLayer"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -172,5 +177,6 @@ value = 0.5
 script = ExtResource("8_0tnpc")
 
 [connection signal="finished" from="Music" to="." method="_on_game_over"]
+[connection signal="finished" from="Metronome" to="." method="_metronome"]
 [connection signal="pressed" from="CanvasLayer/GameOverPanel/VBoxContainer/HBoxContainer2/Replay" to="." method="_on_restart_click"]
 [connection signal="value_changed" from="CanvasLayer/GameOverPanel/VBoxContainer/HBoxContainer3/volume" to="CanvasLayer/GameOverPanel/VBoxContainer/HBoxContainer3/volume" method="_on_value_changed"]
