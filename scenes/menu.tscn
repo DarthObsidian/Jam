@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://duspu8ehigddu"]
+[gd_scene load_steps=7 format=3 uid="uid://duspu8ehigddu"]
 
 [ext_resource type="Texture2D" uid="uid://oacrncsqprgt" path="res://assets/test.png" id="1_yqeox"]
 [ext_resource type="Script" uid="uid://qyr74nq3bmf8" path="res://scripts/play_button.gd" id="2_vjb58"]
 [ext_resource type="Texture2D" uid="uid://bdlae8xl7vwaq" path="res://assets/placeholder/volume.png" id="3_con2f"]
 [ext_resource type="Script" uid="uid://df5mfubutms13" path="res://scripts/volume.gd" id="4_mhnvy"]
+[ext_resource type="AudioStream" uid="uid://dnpmx7fcg2lsx" path="res://assets/music/music_menu_first_pass.wav" id="5_4ytvr"]
+[ext_resource type="Script" uid="uid://dbaxsp1rlwue7" path="res://scripts/menuMusic.gd" id="6_g3eks"]
 
 [node name="root" type="Node2D"]
 
@@ -104,5 +106,11 @@ David Solomon
 Jeffrey Meyers
 Matthew Meyers"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_4ytvr")
+autoplay = true
+script = ExtResource("6_g3eks")
+
 [connection signal="pressed" from="CanvasLayer/AspectRatioContainer/Background/PlayButton" to="CanvasLayer/AspectRatioContainer/Background/PlayButton" method="_on_pressed"]
 [connection signal="value_changed" from="CanvasLayer/AspectRatioContainer/Background/Control/volume" to="CanvasLayer/AspectRatioContainer/Background/Control/volume" method="_on_value_changed"]
+[connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_first_loop_done"]
