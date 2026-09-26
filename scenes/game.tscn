@@ -69,13 +69,14 @@ music_player = NodePath("../Music")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Points" type="RichTextLabel" parent="CanvasLayer"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -352.0
-offset_right = -152.0
-offset_bottom = 55.0
-grow_horizontal = 0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 181.0
+offset_top = 31.0
+offset_right = 381.0
+offset_bottom = 86.0
+grow_horizontal = 2
 theme_override_font_sizes/normal_font_size = 40
 text = "0"
 horizontal_alignment = 2
