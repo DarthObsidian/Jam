@@ -177,7 +177,8 @@ position = Vector2(42, 17)
 
 [node name="Song" type="Node" parent="." node_paths=PackedStringArray("track", "music_player")]
 script = ExtResource("5_iywne")
-song_data_file = "res://SongData/song_cozy.json"
+normal_song_data = "res://SongData/song_cozy.json"
+hard_song_data = "res://SongData/song_cozy_hard.json"
 track = NodePath("../Track")
 music_player = NodePath("../Music")
 
@@ -197,7 +198,6 @@ text = "0"
 horizontal_alignment = 2
 
 [node name="GameOverPanel" type="Panel" parent="CanvasLayer"]
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -249,16 +249,33 @@ text = "High Score:"
 layout_mode = 2
 text = "1000"
 
+[node name="PlayAgain" type="HBoxContainer" parent="CanvasLayer/GameOverPanel/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="HighScoreLabel" type="Label" parent="CanvasLayer/GameOverPanel/VBoxContainer/PlayAgain"]
+layout_mode = 2
+text = "Play Again?"
+
 [node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/GameOverPanel/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Replay" type="Button" parent="CanvasLayer/GameOverPanel/VBoxContainer/HBoxContainer2"]
+[node name="ReplayNormal" type="Button" parent="CanvasLayer/GameOverPanel/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_iywne")
 theme_override_styles/hover = SubResource("StyleBoxFlat_p57ef")
 theme_override_styles/focus = SubResource("StyleBoxFlat_u5sy4")
-text = "Play Again"
+text = "Normal
+"
+
+[node name="ReplayHard" type="Button" parent="CanvasLayer/GameOverPanel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_iywne")
+theme_override_styles/hover = SubResource("StyleBoxFlat_p57ef")
+theme_override_styles/focus = SubResource("StyleBoxFlat_u5sy4")
+text = "Hard
+"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/GameOverPanel/VBoxContainer"]
 layout_mode = 2
@@ -285,5 +302,6 @@ script = ExtResource("8_0tnpc")
 
 [connection signal="finished" from="Music" to="." method="_on_game_over"]
 [connection signal="finished" from="Metronome" to="." method="_metronome"]
-[connection signal="pressed" from="CanvasLayer/GameOverPanel/VBoxContainer/HBoxContainer2/Replay" to="." method="_on_restart_click"]
+[connection signal="pressed" from="CanvasLayer/GameOverPanel/VBoxContainer/HBoxContainer2/ReplayNormal" to="." method="_on_restart_click"]
+[connection signal="pressed" from="CanvasLayer/GameOverPanel/VBoxContainer/HBoxContainer2/ReplayHard" to="." method="_on_replay_hard_click"]
 [connection signal="value_changed" from="CanvasLayer/GameOverPanel/VBoxContainer/HBoxContainer3/volume" to="CanvasLayer/GameOverPanel/VBoxContainer/HBoxContainer3/volume" method="_on_value_changed"]

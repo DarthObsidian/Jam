@@ -3,6 +3,8 @@ class_name SongController
 extends Node
 
 @export_file("*.json") var song_data_file: String
+@export_file("*.json") var normal_song_data: String
+@export_file("*.json") var hard_song_data: String
 @export var track: NoteTrack
 @export var music_player: AudioStreamPlayer
 
@@ -32,7 +34,6 @@ var song_beat : float = 0.0
 func _ready() -> void:
 	pass
 
-
 func _process(_delta: float) -> void:
 	song_beat = music_player.get_playback_position() * (bpm/60)
 	spawn_notes(song_beat)
@@ -43,6 +44,12 @@ func _process(_delta: float) -> void:
 
 
 func load_song() -> void:
+	match GameState.difficulty:
+		Constants.Difficulty.Normal:
+			song_data_file = normal_song_data
+		Constants.Difficulty.Hard:
+			song_data_file = hard_song_data
+			
 	if song_data_file.is_empty():
 		push_error("SongController: No chart file assigned.")
 		return

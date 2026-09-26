@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://duspu8ehigddu"]
 
-[ext_resource type="Script" uid="uid://p2p7j308ej4a" path="res://scripts/menu.gd" id="1_13sgg"]
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_13sgg"]
 [ext_resource type="Texture2D" uid="uid://bmgikxxo1fl6m" path="res://assets/art/Background.png" id="2_i6lef"]
 [ext_resource type="Script" uid="uid://qyr74nq3bmf8" path="res://scripts/play_button.gd" id="2_vjb58"]
 [ext_resource type="Texture2D" uid="uid://dbb2g2w5ak7ff" path="res://assets/art/Spotlight.png" id="3_70i5f"]
@@ -8,7 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://brapiai3i5dr6" path="res://assets/music/menu_scroll.wav" id="3_v86rl"]
 [ext_resource type="Script" uid="uid://df5mfubutms13" path="res://scripts/volume.gd" id="4_mhnvy"]
 [ext_resource type="AudioStream" uid="uid://dnpmx7fcg2lsx" path="res://assets/music/music_menu_first_pass.wav" id="5_4ytvr"]
-[ext_resource type="Script" uid="uid://dbaxsp1rlwue7" path="res://scripts/menuMusic.gd" id="6_g3eks"]
+[ext_resource type="Script" path="res://scripts/menuMusic.gd" id="6_g3eks"]
 
 [node name="root" type="Node2D"]
 script = ExtResource("1_13sgg")
@@ -61,7 +61,7 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 60
 text = "Ghost-guy jam"
 
-[node name="PlayButton" type="Button" parent="CanvasLayer/AspectRatioContainer/Background"]
+[node name="PlayNormal" type="Button" parent="CanvasLayer/AspectRatioContainer/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -74,10 +74,33 @@ offset_right = 98.5
 offset_bottom = 22.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Play"
+text = "Normal
+"
 script = ExtResource("2_vjb58")
+diffculty = 1
 
-[node name="click" type="AudioStreamPlayer" parent="CanvasLayer/AspectRatioContainer/Background/PlayButton"]
+[node name="click" type="AudioStreamPlayer" parent="CanvasLayer/AspectRatioContainer/Background/PlayNormal"]
+stream = ExtResource("3_v86rl")
+
+[node name="PlayHard" type="Button" parent="CanvasLayer/AspectRatioContainer/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.5
+offset_top = 32.00052
+offset_right = 98.5
+offset_bottom = 76.00052
+grow_horizontal = 2
+grow_vertical = 2
+text = "Hard
+"
+script = ExtResource("2_vjb58")
+diffculty = 2
+
+[node name="click" type="AudioStreamPlayer" parent="CanvasLayer/AspectRatioContainer/Background/PlayHard"]
 stream = ExtResource("3_v86rl")
 
 [node name="Control" type="Control" parent="CanvasLayer/AspectRatioContainer/Background"]
@@ -135,6 +158,7 @@ stream = ExtResource("5_4ytvr")
 autoplay = true
 script = ExtResource("6_g3eks")
 
-[connection signal="pressed" from="CanvasLayer/AspectRatioContainer/Background/PlayButton" to="CanvasLayer/AspectRatioContainer/Background/PlayButton" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/AspectRatioContainer/Background/PlayNormal" to="CanvasLayer/AspectRatioContainer/Background/PlayNormal" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/AspectRatioContainer/Background/PlayHard" to="CanvasLayer/AspectRatioContainer/Background/PlayHard" method="_on_pressed"]
 [connection signal="value_changed" from="CanvasLayer/AspectRatioContainer/Background/Control/volume" to="CanvasLayer/AspectRatioContainer/Background/Control/volume" method="_on_value_changed"]
 [connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_first_loop_done"]

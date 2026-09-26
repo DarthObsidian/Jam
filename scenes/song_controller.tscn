@@ -4,3 +4,5 @@
 
 [node name="SongController" type="Node"]
 script = ExtResource("1_5qs6v")
+normal_song_data = "res://SongData/song_cozy.json"
+hard_song_data = "res://SongData/song_cozy_hard.json"

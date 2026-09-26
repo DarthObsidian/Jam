@@ -81,9 +81,15 @@ func _on_game_over() -> void:
 
 
 func _on_restart_click() -> void:
+	GameState.difficulty = Constants.Difficulty.Normal
 	$click.play()
 	_reset()
-
+	
+func _on_replay_hard_click() -> void:
+	GameState.difficulty = Constants.Difficulty.Hard
+	$click.play()
+	_reset()
+	
 func _reset() -> void:
 	metronomeLoopCount = 0
 	$Metronome.play()
