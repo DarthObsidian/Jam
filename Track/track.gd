@@ -8,11 +8,6 @@ extends Node2D
 @export var lane_scene: PackedScene
 @export var measure_scene: PackedScene
 
-@export_tool_button("Spawn Test Note")
-var spawn_test_note_button: Callable:
-	get:
-		return Callable(self, "spawn_test_note")
-
 @export var lane_count: int = 4: 
 	set(value): 
 		lane_count = max(1, value)
@@ -90,7 +85,7 @@ func generate_lanes():
 			lane.owner = get_tree().edited_scene_root
 	
 
-func spawn_note(lane_index: int, hit_time: float, travel_time: float, duration: float) -> void:
+func spawn_note(song_controller: SongController, lane_index: int, hit_time: float, travel_time: float, duration: float) -> void:
 	if not note_scene:
 		print("ERROR: No note scene assigned")
 		return
@@ -112,6 +107,7 @@ func spawn_note(lane_index: int, hit_time: float, travel_time: float, duration: 
 	note.z_index = 1
 	note.setup(
 		lane,
+		song_controller,
 		color,
 		hit_time,
 		travel_time,
@@ -136,12 +132,6 @@ func spawn_measure_bar(note_travel_time: float) -> void:
 		note_travel_time
 	) 
 	
-func spawn_test_note() -> void:
-	if not Engine.is_editor_hint():
-		return
-		
-	var random_lane = randi() % lane_count
-	spawn_note(random_lane, 0, 2.0, 0.0)
-	
+
 func get_track_size() -> Vector2:
 	return background.size

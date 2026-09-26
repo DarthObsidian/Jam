@@ -87,7 +87,11 @@ func get_song_time() -> float:
 	if music_player == null:
 		return 0.0
 	return music_player.get_playback_position() * (bpm/60)
-
+	
+func get_song_time_unscaled() -> float:
+	if music_player == null:
+		return 0.0
+	return music_player.get_playback_position()
 
 func spawn_notes(song_time: float) -> void:
 	while next_note_index < notes.size():
@@ -114,6 +118,7 @@ func spawn_note(note_data: Dictionary) -> void:
 	var duration: float = note_data.get("duration", 0.0)
 
 	track.spawn_note(
+		self,
 		lane,
 		hit_time,
 		note_travel_time,
