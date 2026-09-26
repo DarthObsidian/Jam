@@ -1,10 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://b2d4bmi100ubg"]
+[gd_scene load_steps=17 format=3 uid="uid://b2d4bmi100ubg"]
 
 [ext_resource type="PackedScene" uid="uid://huxwpcgu4wdb" path="res://scenes/ghost.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://b47s6u2f2s1t0" path="res://scripts/game.gd" id="1_yqjtg"]
 [ext_resource type="AudioStream" uid="uid://beuvs35fax1l1" path="res://assets/music/menu_select.wav" id="2_0tnpc"]
 [ext_resource type="AudioStream" uid="uid://l0c10lghld0v" path="res://assets/music/CozyFallJam.wav" id="2_gee14"]
+[ext_resource type="Texture2D" uid="uid://bmgikxxo1fl6m" path="res://assets/art/Background.png" id="2_kvpfn"]
+[ext_resource type="Texture2D" uid="uid://dbb2g2w5ak7ff" path="res://assets/art/Spotlight.png" id="3_dinhu"]
 [ext_resource type="PackedScene" uid="uid://brxpg3f45g51v" path="res://scenes/combo.tscn" id="3_lnu2h"]
+[ext_resource type="Texture2D" uid="uid://c5141ap3t0epb" path="res://assets/placeholder/candy.png" id="4_kvuet"]
 [ext_resource type="PackedScene" uid="uid://ccduod3a8kegm" path="res://Track/track.tscn" id="4_lbhrr"]
 [ext_resource type="AudioStream" uid="uid://drdk3jgrmmjo3" path="res://assets/music/metronome.wav" id="4_vtaks"]
 [ext_resource type="Script" uid="uid://7jq3k24lsnel" path="res://scripts/song_controller.gd" id="5_iywne"]
@@ -48,6 +51,110 @@ expand_margin_bottom = 2.0
 [node name="Game" type="Node"]
 script = ExtResource("1_yqjtg")
 
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(1122, 816.00006)
+scale = Vector2(4.210063, 4.895881)
+texture = ExtResource("2_kvpfn")
+
+[node name="Spotlight" type="Sprite2D" parent="."]
+position = Vector2(869, 478)
+scale = Vector2(0.23888199, 0.21448109)
+texture = ExtResource("3_dinhu")
+
+[node name="Controls" type="Node" parent="."]
+
+[node name="Left" type="Sprite2D" parent="Controls"]
+texture_filter = 1
+position = Vector2(65, 535)
+texture = ExtResource("4_kvuet")
+
+[node name="Label" type="Label" parent="Controls/Left"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -29.0
+offset_right = 5.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "Q"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Mid-left" type="Sprite2D" parent="Controls"]
+texture_filter = 1
+position = Vector2(118, 535)
+texture = ExtResource("4_kvuet")
+
+[node name="Label" type="Label" parent="Controls/Mid-left"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -27.0
+offset_right = 5.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "W"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Mid-Right" type="Sprite2D" parent="Controls"]
+texture_filter = 1
+position = Vector2(169, 535)
+texture = ExtResource("4_kvuet")
+
+[node name="Label" type="Label" parent="Controls/Mid-Right"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -28.0
+offset_right = 5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Right" type="Sprite2D" parent="Controls"]
+texture_filter = 1
+position = Vector2(221, 535)
+texture = ExtResource("4_kvuet")
+
+[node name="Label" type="Label" parent="Controls/Right"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -28.0
+offset_right = 5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+text = "R"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="click" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_0tnpc")
 
@@ -58,15 +165,15 @@ stream = ExtResource("2_gee14")
 stream = ExtResource("4_vtaks")
 
 [node name="Ghost" parent="." instance=ExtResource("1_uwrxv")]
-position = Vector2(874.00006, 279)
+position = Vector2(872, 288)
 scale = Vector2(5, 5)
 
 [node name="Combo" parent="." instance=ExtResource("3_lnu2h")]
-position = Vector2(139, 600)
+position = Vector2(139, 592)
 scale = Vector2(2, 2)
 
 [node name="Track" parent="." instance=ExtResource("4_lbhrr")]
-position = Vector2(46, 42)
+position = Vector2(42, 17)
 
 [node name="Song" type="Node" parent="." node_paths=PackedStringArray("track", "music_player")]
 script = ExtResource("5_iywne")

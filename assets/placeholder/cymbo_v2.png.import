@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4frxwg467tox"
-path="res://.godot/imported/cymbol.png-8d9d05c525301baf1edcd0740b1f1cfb.ctex"
+uid="uid://b1j524gs2rhdl"
+path="res://.godot/imported/cymbo_v2.png-c20fbd95d18faa07fb2968f362896f03.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/placeholder/cymbol.png"
-dest_files=["res://.godot/imported/cymbol.png-8d9d05c525301baf1edcd0740b1f1cfb.ctex"]
+source_file="res://assets/placeholder/cymbo_v2.png"
+dest_files=["res://.godot/imported/cymbo_v2.png-c20fbd95d18faa07fb2968f362896f03.ctex"]
 
 [params]
 

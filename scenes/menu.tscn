@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://duspu8ehigddu"]
+[gd_scene load_steps=10 format=3 uid="uid://duspu8ehigddu"]
 
 [ext_resource type="Script" uid="uid://p2p7j308ej4a" path="res://scripts/menu.gd" id="1_13sgg"]
-[ext_resource type="Texture2D" uid="uid://oacrncsqprgt" path="res://assets/test.png" id="1_yqeox"]
+[ext_resource type="Texture2D" uid="uid://bmgikxxo1fl6m" path="res://assets/art/Background.png" id="2_i6lef"]
 [ext_resource type="Script" uid="uid://qyr74nq3bmf8" path="res://scripts/play_button.gd" id="2_vjb58"]
+[ext_resource type="Texture2D" uid="uid://dbb2g2w5ak7ff" path="res://assets/art/Spotlight.png" id="3_70i5f"]
 [ext_resource type="Texture2D" uid="uid://bdlae8xl7vwaq" path="res://assets/placeholder/volume.png" id="3_con2f"]
 [ext_resource type="AudioStream" uid="uid://brapiai3i5dr6" path="res://assets/music/menu_scroll.wav" id="3_v86rl"]
 [ext_resource type="Script" uid="uid://df5mfubutms13" path="res://scripts/volume.gd" id="4_mhnvy"]
@@ -25,7 +26,24 @@ stretch_mode = 0
 
 [node name="Background" type="TextureRect" parent="CanvasLayer/AspectRatioContainer"]
 layout_mode = 2
-texture = ExtResource("1_yqeox")
+texture = ExtResource("2_i6lef")
+expand_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/AspectRatioContainer/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -306.0
+offset_top = -204.99997
+offset_right = 303.0
+offset_bottom = 84.00003
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_70i5f")
+expand_mode = 1
 
 [node name="Title" type="Label" parent="CanvasLayer/AspectRatioContainer/Background"]
 layout_mode = 1

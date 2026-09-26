@@ -87,6 +87,7 @@ func _on_restart_click() -> void:
 func _reset() -> void:
 	metronomeLoopCount = 0
 	$Metronome.play()
+	$Ghost.play_idle()
 	$Song.load_song()
 	gameOver = false
 	gameOverPanel.position.y = get_viewport().get_visible_rect().size.y

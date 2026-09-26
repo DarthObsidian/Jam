@@ -32,7 +32,10 @@ func add_combo() -> void:
 		pumpkins[currentIndex].frame += 1
 	currentStep += 1
 	set_glow_strength()
-	
+	if currentIndex >= pumpkins.size() - 1 and currentStep == step:
+		$audio.play()
+
+
 func add_perfect_combo() -> void:
 	add_combo()
 	add_combo()
@@ -49,7 +52,8 @@ func clear_combo() -> void:
 
 func get_combo_multiplyer() -> int:
 	return currentIndex + 2 if currentStep == 4 else currentIndex + 1
-	
+
+
 func set_glow_strength() -> void:
 	if(currentStep >= pumpkins.size()):
 		return
