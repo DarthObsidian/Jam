@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://ccduod3a8kegm"]
+[gd_scene load_steps=7 format=3 uid="uid://ccduod3a8kegm"]
 
 [ext_resource type="Script" uid="uid://p32aj6fphx82" path="res://Track/track.gd" id="1_4iscw"]
-[ext_resource type="Texture2D" uid="uid://nfvds2caxfj5" path="res://Track/track_temp.png" id="2_6alhs"]
 [ext_resource type="PackedScene" uid="uid://bmb3es860hw4t" path="res://Note/note.tscn" id="2_8yr1p"]
 [ext_resource type="PackedScene" uid="uid://bk0yvgbqlobb6" path="res://Track/Lane/lane.tscn" id="3_8yr1p"]
 [ext_resource type="PackedScene" uid="uid://vfmaax516kcn" path="res://Track/Lane/measure_bar.tscn" id="4_tmdkr"]
@@ -15,7 +14,7 @@ lanes = NodePath("TrackVisuals/TextureRect/Lanes")
 note_scene = ExtResource("2_8yr1p")
 lane_scene = ExtResource("3_8yr1p")
 measure_scene = ExtResource("4_tmdkr")
-lane_colors = Array[Color]([Color(1, 0, 0, 1), Color(0, 0, 1, 1), Color(10.581538, 8.116523, 0, 1), Color(0, 1, 0, 1), Color(1.3167266, 0.4601145, 0, 1), Color(0.7372549, 0, 1, 1)])
+lane_colors = Array[Color]([Color(0.7529412, 0.26666668, 0.18039216, 1), Color(0.39215687, 0.58431375, 0.2627451, 1), Color(0.9607843, 0.5137255, 0.11764706, 1), Color(0.34901962, 0.49411765, 0.7490196, 1), Color(1.3167266, 1.3167266, 0, 1), Color(0.7372549, 0, 1, 1)])
 spawn_height_mod = 10.0
 target_height_mod = 25.0
 
@@ -25,7 +24,6 @@ target_height_mod = 25.0
 custom_minimum_size = Vector2(200, 500)
 offset_right = 200.0
 offset_bottom = 500.0
-texture = ExtResource("2_6alhs")
 expand_mode = 1
 stretch_mode = 1
 

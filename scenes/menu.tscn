@@ -1,14 +1,25 @@
-[gd_scene load_steps=10 format=3 uid="uid://duspu8ehigddu"]
+[gd_scene load_steps=15 format=3 uid="uid://duspu8ehigddu"]
 
-[ext_resource type="Script" path="res://scripts/menu.gd" id="1_13sgg"]
+[ext_resource type="Script" uid="uid://p2p7j308ej4a" path="res://scripts/menu.gd" id="1_13sgg"]
 [ext_resource type="Texture2D" uid="uid://bmgikxxo1fl6m" path="res://assets/art/Background.png" id="2_i6lef"]
 [ext_resource type="Script" uid="uid://qyr74nq3bmf8" path="res://scripts/play_button.gd" id="2_vjb58"]
 [ext_resource type="Texture2D" uid="uid://dbb2g2w5ak7ff" path="res://assets/art/Spotlight.png" id="3_70i5f"]
 [ext_resource type="Texture2D" uid="uid://bdlae8xl7vwaq" path="res://assets/placeholder/volume.png" id="3_con2f"]
+[ext_resource type="Texture2D" uid="uid://451v5j4w62ku" path="res://assets/art/OrangePumpkin.png" id="3_ufwb2"]
 [ext_resource type="AudioStream" uid="uid://brapiai3i5dr6" path="res://assets/music/menu_scroll.wav" id="3_v86rl"]
+[ext_resource type="Texture2D" uid="uid://baqg33kdofixx" path="res://assets/art/BlueMushroom.png" id="4_70i5f"]
 [ext_resource type="Script" uid="uid://df5mfubutms13" path="res://scripts/volume.gd" id="4_mhnvy"]
 [ext_resource type="AudioStream" uid="uid://dnpmx7fcg2lsx" path="res://assets/music/music_menu_first_pass.wav" id="5_4ytvr"]
-[ext_resource type="Script" path="res://scripts/menuMusic.gd" id="6_g3eks"]
+[ext_resource type="Script" uid="uid://dbaxsp1rlwue7" path="res://scripts/menuMusic.gd" id="6_g3eks"]
+[ext_resource type="Texture2D" uid="uid://cjr2df4ocicpm" path="res://assets/art/CompletionVine.png" id="7_mj5lg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70i5f"]
+atlas = ExtResource("3_ufwb2")
+region = Rect2(798.05493, 0, 787.94507, 727)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ufwb2"]
+atlas = ExtResource("4_70i5f")
+region = Rect2(0, 0, 774.3816, 1020.79974)
 
 [node name="root" type="Node2D"]
 script = ExtResource("1_13sgg")
@@ -29,7 +40,7 @@ layout_mode = 2
 texture = ExtResource("2_i6lef")
 expand_mode = 1
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/AspectRatioContainer/Background"]
+[node name="Spotlight" type="TextureRect" parent="CanvasLayer/AspectRatioContainer/Background"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -39,7 +50,7 @@ anchor_bottom = 0.5
 offset_left = -306.0
 offset_top = -204.99997
 offset_right = 303.0
-offset_bottom = 84.00003
+offset_bottom = 114.00003
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_70i5f")
@@ -59,7 +70,8 @@ offset_bottom = -72.99997
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 60
-text = "Ghost-guy jam"
+text = "Fall Beats"
+horizontal_alignment = 1
 
 [node name="PlayNormal" type="Button" parent="CanvasLayer/AspectRatioContainer/Background"]
 layout_mode = 1
@@ -112,6 +124,19 @@ offset_top = -40.0
 offset_right = 40.0
 grow_vertical = 0
 
+[node name="roots" type="TextureRect" parent="CanvasLayer/AspectRatioContainer/Background/Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 76.0
+offset_top = -119.95947
+offset_right = 406.91864
+offset_bottom = -26.0
+grow_vertical = 0
+texture = ExtResource("7_mj5lg")
+expand_mode = 1
+
 [node name="volume" type="HSlider" parent="CanvasLayer/AspectRatioContainer/Background/Control"]
 layout_mode = 1
 anchors_preset = 2
@@ -152,6 +177,55 @@ Anna Meyers
 David Solomon
 Jeffrey Meyers
 Matthew Meyers"
+
+[node name="pumpkin" type="TextureRect" parent="CanvasLayer/AspectRatioContainer/Background"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -383.0
+offset_top = -199.95947
+offset_right = 404.0
+offset_bottom = 527.0405
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.25, 0.25)
+texture = SubResource("AtlasTexture_70i5f")
+
+[node name="blueShroom" type="TextureRect" parent="CanvasLayer/AspectRatioContainer/Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -434.0
+offset_top = -176.99997
+offset_right = 340.0
+offset_bottom = 843.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+texture = SubResource("AtlasTexture_ufwb2")
+
+[node name="blueShroom" type="TextureRect" parent="CanvasLayer/AspectRatioContainer/Background/blueShroom"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -219.0
+offset_top = 206.0
+offset_right = 555.0
+offset_bottom = 1226.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.13962634
+scale = Vector2(0.25, 0.25)
+texture = SubResource("AtlasTexture_ufwb2")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_4ytvr")

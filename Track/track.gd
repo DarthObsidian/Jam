@@ -41,12 +41,7 @@ func generate_lanes():
 		return 
 	
 	print("Background: ", background)
-	print("Texture: ", background.get_texture())
-		
-	if not background.texture:
-		print("ERROR: no background texture") 
-		return 
-		
+
 	if not lanes: 
 		print ("ERROR: no Lanes object")
 		return
@@ -99,9 +94,6 @@ func spawn_note(song_controller: SongController, lane_index: int, hit_beat: floa
 	var lane := lanes.get_child(lane_index)
 	lane.add_child(note)
 
-	var track_size := get_track_size()
-	var lane_width := track_size.x / lane_count
-
 	var color := lane_colors[lane_index % lane_colors.size()]
 
 	note.z_index = 1
@@ -113,6 +105,8 @@ func spawn_note(song_controller: SongController, lane_index: int, hit_beat: floa
 		travel_beats,
 		duration
 	) 
+
+
 func spawn_measure_bar(song_controller: SongController, note_travel_beats: float) -> void:
 	if not measure_scene:
 		print("ERROR: No measure scene assigned")
@@ -133,6 +127,7 @@ func spawn_measure_bar(song_controller: SongController, note_travel_beats: float
 		note_travel_beats
 	) 
 	
+
 
 func get_track_size() -> Vector2:
 	return background.size

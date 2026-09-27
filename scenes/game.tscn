@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b2d4bmi100ubg"]
+[gd_scene load_steps=19 format=3 uid="uid://b2d4bmi100ubg"]
 
 [ext_resource type="PackedScene" uid="uid://huxwpcgu4wdb" path="res://scenes/ghost.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://b47s6u2f2s1t0" path="res://scripts/game.gd" id="1_yqjtg"]
@@ -7,12 +7,14 @@
 [ext_resource type="Texture2D" uid="uid://bmgikxxo1fl6m" path="res://assets/art/Background.png" id="2_kvpfn"]
 [ext_resource type="Texture2D" uid="uid://dbb2g2w5ak7ff" path="res://assets/art/Spotlight.png" id="3_dinhu"]
 [ext_resource type="PackedScene" uid="uid://brxpg3f45g51v" path="res://scenes/combo.tscn" id="3_lnu2h"]
-[ext_resource type="Texture2D" uid="uid://c5141ap3t0epb" path="res://assets/placeholder/candy.png" id="4_kvuet"]
+[ext_resource type="Texture2D" uid="uid://bp06mfpsdgsl8" path="res://assets/art/Candy.png" id="4_kvuet"]
 [ext_resource type="PackedScene" uid="uid://ccduod3a8kegm" path="res://Track/track.tscn" id="4_lbhrr"]
 [ext_resource type="AudioStream" uid="uid://drdk3jgrmmjo3" path="res://assets/music/metronome.wav" id="4_vtaks"]
 [ext_resource type="Script" uid="uid://7jq3k24lsnel" path="res://scripts/song_controller.gd" id="5_iywne"]
 [ext_resource type="Texture2D" uid="uid://bdlae8xl7vwaq" path="res://assets/placeholder/volume.png" id="7_gee14"]
 [ext_resource type="Script" uid="uid://df5mfubutms13" path="res://scripts/volume.gd" id="8_0tnpc"]
+[ext_resource type="Texture2D" uid="uid://b7is1urubju7e" path="res://assets/art/Tree.png" id="9_trtic"]
+[ext_resource type="Texture2D" uid="uid://0hq1nfxvvo1f" path="res://assets/art/CandyBucket.png" id="13_ir15t"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iywne"]
 content_margin_left = 5.0
@@ -57,103 +59,9 @@ scale = Vector2(4.210063, 4.895881)
 texture = ExtResource("2_kvpfn")
 
 [node name="Spotlight" type="Sprite2D" parent="."]
-position = Vector2(869, 478)
+position = Vector2(801, 448.99997)
 scale = Vector2(0.23888199, 0.21448109)
 texture = ExtResource("3_dinhu")
-
-[node name="Controls" type="Node" parent="."]
-
-[node name="Left" type="Sprite2D" parent="Controls"]
-texture_filter = 1
-position = Vector2(65, 535)
-texture = ExtResource("4_kvuet")
-
-[node name="Label" type="Label" parent="Controls/Left"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -35.0
-offset_top = -29.0
-offset_right = 5.0
-offset_bottom = -6.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-text = "Q"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Mid-left" type="Sprite2D" parent="Controls"]
-texture_filter = 1
-position = Vector2(118, 535)
-texture = ExtResource("4_kvuet")
-
-[node name="Label" type="Label" parent="Controls/Mid-left"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -35.0
-offset_top = -27.0
-offset_right = 5.0
-offset_bottom = -4.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-text = "W"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Mid-Right" type="Sprite2D" parent="Controls"]
-texture_filter = 1
-position = Vector2(169, 535)
-texture = ExtResource("4_kvuet")
-
-[node name="Label" type="Label" parent="Controls/Mid-Right"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -35.0
-offset_top = -28.0
-offset_right = 5.0
-offset_bottom = -5.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-text = "E"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Right" type="Sprite2D" parent="Controls"]
-texture_filter = 1
-position = Vector2(221, 535)
-texture = ExtResource("4_kvuet")
-
-[node name="Label" type="Label" parent="Controls/Right"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -35.0
-offset_top = -28.0
-offset_right = 5.0
-offset_bottom = -5.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 5
-text = "R"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="click" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_0tnpc")
@@ -165,22 +73,135 @@ stream = ExtResource("2_gee14")
 stream = ExtResource("4_vtaks")
 
 [node name="Ghost" parent="." instance=ExtResource("1_uwrxv")]
-position = Vector2(872, 288)
-scale = Vector2(5, 5)
+position = Vector2(805, 184)
+scale = Vector2(0.25, 0.25)
 
-[node name="Combo" parent="." instance=ExtResource("3_lnu2h")]
-position = Vector2(139, 592)
-scale = Vector2(2, 2)
+[node name="Tree" type="Sprite2D" parent="."]
+position = Vector2(171, 317)
+scale = Vector2(0.39466542, 0.3946655)
+texture = ExtResource("9_trtic")
 
-[node name="Track" parent="." instance=ExtResource("4_lbhrr")]
-position = Vector2(42, 17)
+[node name="Controls" type="Node" parent="Tree"]
+
+[node name="Left" type="Sprite2D" parent="Tree/Controls"]
+texture_filter = 1
+position = Vector2(67, 538)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_kvuet")
+
+[node name="Label" type="Label" parent="Tree/Controls/Left"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -143.5
+offset_top = -141.0
+offset_right = -80.5
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 80
+text = "Q"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MidLeft" type="Sprite2D" parent="Tree/Controls"]
+texture_filter = 1
+position = Vector2(118, 538)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_kvuet")
+
+[node name="Label" type="Label" parent="Tree/Controls/MidLeft"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -147.5
+offset_top = -129.0
+offset_right = -71.5
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 80
+text = "W"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MidRight" type="Sprite2D" parent="Tree/Controls"]
+texture_filter = 1
+position = Vector2(168, 538)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_kvuet")
+
+[node name="Label" type="Label" parent="Tree/Controls/MidRight"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -151.5
+offset_top = -137.0
+offset_right = -75.5
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 80
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Right" type="Sprite2D" parent="Tree/Controls"]
+texture_filter = 1
+position = Vector2(218, 538)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_kvuet")
+
+[node name="Label" type="Label" parent="Tree/Controls/Right"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -151.5
+offset_top = -137.0
+offset_right = -75.5
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 80
+text = "R"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Combo" parent="Tree" instance=ExtResource("3_lnu2h")]
+position = Vector2(-81.08136, 696.79254)
+scale = Vector2(0.8868272, 0.88682693)
+
+[node name="Track" parent="Tree" instance=ExtResource("4_lbhrr")]
+position = Vector2(-321.792, -800)
+scale = Vector2(2.533792, 2.5337913)
 
 [node name="Song" type="Node" parent="." node_paths=PackedStringArray("track", "music_player")]
 script = ExtResource("5_iywne")
 normal_song_data = "res://SongData/song_cozy.json"
 hard_song_data = "res://SongData/song_cozy_hard.json"
-track = NodePath("../Track")
+track = NodePath("../Tree/Track")
 music_player = NodePath("../Music")
+
+[node name="CandyBucket" type="Sprite2D" parent="."]
+position = Vector2(998.0001, 533)
+scale = Vector2(0.4963235, 0.49632356)
+texture = ExtResource("13_ir15t")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -188,12 +209,13 @@ music_player = NodePath("../Music")
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 181.0
-offset_top = 31.0
-offset_right = 381.0
-offset_bottom = 86.0
+offset_left = 371.0
+offset_top = 527.0
+offset_right = 479.0
+offset_bottom = 582.0
 grow_horizontal = 2
-theme_override_font_sizes/normal_font_size = 40
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/normal_font_size = 35
 text = "0"
 horizontal_alignment = 2
 
@@ -204,16 +226,19 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -271.0
-offset_top = -164.0
+offset_top = -174.0
 offset_right = 271.0
-offset_bottom = 164.0
+offset_bottom = 218.99939
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/GameOverPanel"]
-layout_mode = 0
-offset_right = 542.0
-offset_bottom = 328.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/separation = 35
 alignment = 1
 

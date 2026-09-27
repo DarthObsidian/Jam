@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b1j524gs2rhdl"
-path="res://.godot/imported/cymbo_v2.png-c20fbd95d18faa07fb2968f362896f03.ctex"
+path="res://.godot/imported/cymbol_v2.png-a4cc9b3575e33adb5b19885ff9705fbb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/placeholder/cymbo_v2.png"
-dest_files=["res://.godot/imported/cymbo_v2.png-c20fbd95d18faa07fb2968f362896f03.ctex"]
+source_file="res://assets/placeholder/cymbol_v2.png"
+dest_files=["res://.godot/imported/cymbol_v2.png-a4cc9b3575e33adb5b19885ff9705fbb.ctex"]
 
 [params]
 

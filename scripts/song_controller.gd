@@ -34,6 +34,7 @@ var song_beat : float = 0.0
 func _ready() -> void:
 	pass
 
+
 func _process(_delta: float) -> void:
 	song_beat = music_player.get_playback_position() * (bpm/60)
 	spawn_notes(song_beat)
@@ -180,6 +181,7 @@ func get_best_note_for_lane(lane_index: int) -> Note:
 				best_note = child
 
 	return best_note
+
 
 func spawn_measure_bar() -> void:
 	if track == null:

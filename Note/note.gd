@@ -11,7 +11,7 @@ var lane: Lane
 var song_controller: SongController
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var current_beat = song_controller.get_song_beat()
 
 	var progress : float = (current_beat - spawn_beat) / travel_beats

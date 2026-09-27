@@ -5,6 +5,7 @@ var totalPoints : int = 0
 var high_score : int = 0
 const POINTS = 5
 const WAIT = 2
+const MAX_POINTS = 99999
 var gameOver = false
 var gameOverDelay = 0
 var metronomeLoopCount = 0
@@ -16,6 +17,7 @@ var metronomeLoopCount = 0
 @onready var highScoreLabel = $CanvasLayer/GameOverPanel/VBoxContainer/HighScoreBox/HighScoreLabel
 @onready var gameOverPanel = $CanvasLayer/GameOverPanel
 @onready var points = $CanvasLayer/Points
+@onready var combo = $Tree/Combo
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -39,7 +41,10 @@ func _notification(what: int) -> void:
 
 func _add_points() -> void:
 	var oldTotal = totalPoints
-	totalPoints += POINTS * $Combo.get_combo_multiplyer()
+	totalPoints += POINTS * combo.get_combo_multiplyer()
+	if totalPoints > MAX_POINTS:
+		totalPoints = MAX_POINTS
+
 	for i in range(oldTotal, totalPoints+1):
 		points.text = str(i)
 		await get_tree().create_timer(0.01).timeout
@@ -49,14 +54,14 @@ func _do_hit(hitStatus: Constants.HitStatus) -> void:
 	match hitStatus:
 		Constants.HitStatus.Miss:
 			$Ghost.play_miss()
-			$Combo.clear_combo()
+			combo.clear_combo()
 		Constants.HitStatus.Good:
 			$Ghost.play_good()
-			$Combo.add_combo()
+			combo.add_combo()
 			_add_points()
 		Constants.HitStatus.Perfect:
 			$Ghost.play_perfect()
-			$Combo.add_perfect_combo()
+			combo.add_perfect_combo()
 			_add_points()
 		Constants.HitStatus.None:
 			pass
@@ -99,7 +104,7 @@ func _reset() -> void:
 	gameOverPanel.position.y = get_viewport().get_visible_rect().size.y
 	totalPoints = 0
 	points.text = str(0)
-	$Combo.clear_combo()
+	combo.clear_combo()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

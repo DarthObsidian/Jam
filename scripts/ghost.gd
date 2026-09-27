@@ -2,6 +2,7 @@ extends Node2D
 
 
 @onready var eyes = $body/eyes
+@onready var arms = $arms
 @onready var body = $body
 @onready var drum_right = $drum_right
 @onready var drum_left = $drum_left
@@ -11,7 +12,7 @@ extends Node2D
 
 func _ready() -> void:
 	eyes.animation_finished.connect(_on_eye_anim_done)
-	body.animation_finished.connect(_on_body_anim_done)
+	arms.animation_finished.connect(_on_arms_anim_done)
 	drum_right.animation_finished.connect(_on_drum_right_done)
 	drum_left.animation_finished.connect(_on_drum_left_done)
 	cymbol_left.animation_finished.connect(_on_cymbol_left_done)
@@ -38,8 +39,8 @@ func _on_eye_anim_done() -> void:
 	eyes.play("idle")
 
 
-func _on_body_anim_done() -> void:
-	body.play("idle")
+func _on_arms_anim_done() -> void:
+	arms.play("idle")
 
 
 func play_miss() -> void:
@@ -57,6 +58,7 @@ func play_good() -> void:
 func play_idle() -> void:
 	body.play("idle")
 	eyes.play("idle")
+	arms.play("idle")
 	drum_left.play("idle")
 	drum_right.play("idle")
 	cymbol_right.play("idle")
@@ -66,14 +68,14 @@ func play_idle() -> void:
 func play_hit(hit: Constants.Hit) -> void:
 	match hit:
 		Constants.Hit.Left:
-			body.play("hitLeft")
+			arms.play("hitLeft")
 			cymbol_left.play("hit")
 		Constants.Hit.MidLeft:
-			body.play("hitMidLeft")
+			arms.play("hitMidLeft")
 			drum_left.play("hit")
 		Constants.Hit.MidRight:
-			body.play("hitMidRight")
+			arms.play("hitMidRight")
 			drum_right.play("hit")
 		Constants.Hit.Right: 
-			body.play("hitRight")
+			arms.play("hitRight")
 			cymbol_right.play("hit")
