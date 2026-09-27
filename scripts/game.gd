@@ -16,8 +16,9 @@ var metronomeLoopCount = 0
 @onready var highScoreBox = $CanvasLayer/GameOverPanel/VBoxContainer/HighScoreBox
 @onready var highScoreLabel = $CanvasLayer/GameOverPanel/VBoxContainer/HighScoreBox/HighScoreLabel
 @onready var gameOverPanel = $CanvasLayer/GameOverPanel
-@onready var points = $CanvasLayer/Points
-@onready var combo = $Tree/Combo
+@onready var points = $CanvasLayer/Control/Points
+@onready var combo = $CanvasLayer/tree/Combo
+@onready var ghost = $CanvasLayer/ghost/GhostSprite
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -53,14 +54,14 @@ func _add_points() -> void:
 func _do_hit(hitStatus: Constants.HitStatus) -> void:
 	match hitStatus:
 		Constants.HitStatus.Miss:
-			$Ghost.play_miss()
+			ghost.play_miss()
 			combo.clear_combo()
 		Constants.HitStatus.Good:
-			$Ghost.play_good()
+			ghost.play_good()
 			combo.add_combo()
 			_add_points()
 		Constants.HitStatus.Perfect:
-			$Ghost.play_perfect()
+			ghost.play_perfect()
 			combo.add_perfect_combo()
 			_add_points()
 		Constants.HitStatus.None:
@@ -98,10 +99,11 @@ func _on_replay_hard_click() -> void:
 func _reset() -> void:
 	metronomeLoopCount = 0
 	$Metronome.play()
-	$Ghost.play_idle()
+	ghost.play_idle()
 	$Song.load_song()
 	gameOver = false
 	gameOverPanel.position.y = get_viewport().get_visible_rect().size.y
+	gameOverPanel.visible = false
 	totalPoints = 0
 	points.text = str(0)
 	combo.clear_combo()
@@ -112,16 +114,16 @@ func _process(delta: float) -> void:
 		var hitStatus = Constants.HitStatus.None
 		if Input.is_action_just_pressed("left"):
 			hitStatus = $Song.judge_note(0)
-			$Ghost.play_hit(Constants.Hit.Left)
+			ghost.play_hit(Constants.Hit.Left)
 		elif Input.is_action_just_pressed("mid-left"):
 			hitStatus = $Song.judge_note(1)
-			$Ghost.play_hit(Constants.Hit.MidLeft)
+			ghost.play_hit(Constants.Hit.MidLeft)
 		elif Input.is_action_just_pressed("mid-right"):
 			hitStatus = $Song.judge_note(2)
-			$Ghost.play_hit(Constants.Hit.MidRight)
+			ghost.play_hit(Constants.Hit.MidRight)
 		elif Input.is_action_just_pressed("right"):
 			hitStatus = $Song.judge_note(3)
-			$Ghost.play_hit(Constants.Hit.Right)
+			ghost.play_hit(Constants.Hit.Right)
 
 		_do_hit(hitStatus)
 	else:
